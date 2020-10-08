@@ -29,6 +29,20 @@ app.get("/", function (req, res) {
   res.render("login");
 });
 
+app.get("/done", function (req, res) {
+  res.render("done");
+});
+
+app.get("/template", function (req, res) {
+  res.render("template");
+});
+
+app.post("/template", function (req, res) {
+  ans = req.body.answer;
+  console.log(ans);
+  res.render("done", { answer1: ans });
+});
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
