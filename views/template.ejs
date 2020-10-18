@@ -16,9 +16,13 @@
             if(sec<1){
                 clearTimeout(timer);
                 element.innerHTML='<h1>Time Up!</h1>';
+                
             }
             sec--;
             var timer =setTimeout('countDown('+sec+',"'+elem+'")', 1000 );
+            
+            
+     
         }
     </script>
 </head>
@@ -32,14 +36,15 @@
             <div class="row no-gutters">
                 <div class="col-lg-5">
                     <div id="countdown"></div>
-                    <script type=text/javascript>countDown(10, "countdown")
-                    
-                    
-                    </script>
+                   
                 </div>
                 <div class="col-lg-7" id="questions">
                     <h1>Who is the President of India?</h1>
-                    <form action="/template" method="post">
+                    <form action="/template" method="post" name="xyz">
+                        <script type=text/javascript>countDown(10, "countdown")
+                             var wait=setTimeout("document.xyz.submit();",10000);
+                    
+                        </script>
                         <div class="form-row">
                             <div class="col-lg-7" id="input">
                                 <input type="text" name="answer" placeholder="Answer" autofocus>
