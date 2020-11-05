@@ -80,6 +80,30 @@ const admin=new Admin([
 ]);
 
 admin.question.push(q);
+q={
+    questions:"Where is the statue of liberty situated?"
+  };
+  admin.question.push(q);
+  q={
+    questions:"What is the full form of dbms?"
+    };
+    admin.question.push(q);
+    q= {
+        questions:"Who is the captain of Indian cricket team?"
+      };
+      admin.question.push(q);
+    q={
+        questions:"Who is the only captian who has won all the three ICC trophies?"
+      };
+    admin.question.push(q);
+    q={
+        questions:"Which movie of Amir Khan went to Oscars?"
+      };
+    admin.question.push(q);
+    q={
+        questions:"Where was 2010 football world cup held?"
+      };
+    admin.question.push(q);
 admin.save();
 
 
@@ -147,12 +171,18 @@ app.post('/login', function(req, res){
 // app.get("/done", function (req, res) {
 //   res.render("done");
 // });
-
+var counter=0;
 app.get("/template", function (req, res) {
   if(req.isAuthenticated()){
-    console.log(admin.question[0].questions);
-    res.render("template",{quest:admin});
+    //console.log(admin.question);
+    if(counter<7){
 
+      res.render("template",{quest:admin,cnt:counter});
+      counter++;
+    }
+    else{
+      res.render("done");
+    }
   }
   else{
     res.redirect("/login");
