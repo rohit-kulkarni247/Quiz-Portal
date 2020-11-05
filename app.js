@@ -40,10 +40,15 @@ const loginschema=new mongoose.Schema({
   versionKey: false
 });
 
+// const questionschema=new mongoose.Schema({
+//   questions: String
+// });
+
 
 loginschema.plugin(passportLocalMongoose);
 
 const User = new mongoose.model("User", loginschema);
+const Admin= new mongoose.model("admin",questionschema,"questions");
 
 passport.use(User.createStrategy());
 
@@ -111,6 +116,7 @@ app.post('/login', function(req, res){
 
 app.get("/template", function (req, res) {
   if(req.isAuthenticated()){
+    console.log(admins);
     res.render("template");
 
   }
