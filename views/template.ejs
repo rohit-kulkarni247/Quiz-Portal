@@ -39,7 +39,9 @@
                    
                 </div>
                 <div class="col-lg-7" id="questions">
-                    <h1>Who is the President of India?</h1>
+                    <% for(let i = 0; i <quest.question.length; i++){ %>
+                        <h1><%= quest.question[i].questions %></h1>
+                    <% } %>
                     <form action="/template" method="post" name="xyz">
                         <script type=text/javascript>countDown(10, "countdown")
                              var wait=setTimeout("document.xyz.submit();",10000);

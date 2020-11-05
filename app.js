@@ -40,15 +40,48 @@ const loginschema=new mongoose.Schema({
   versionKey: false
 });
 
-// const questionschema=new mongoose.Schema({
-//   questions: String
-// });
+const questionschema=new mongoose.Schema({
+  question: [{
+    questions:String
+  }]
+});
 
 
 loginschema.plugin(passportLocalMongoose);
 
 const User = new mongoose.model("User", loginschema);
-const Admin= new mongoose.model("admin",questionschema,"questions");
+const Admin= new mongoose.model("Admin",questionschema,);
+
+var q={questions:"Who will win US president elections?"};
+
+// var tempQuest=[  {
+//   questions:"Where is the statue of liberty situated?"
+// },
+// {
+// questions:"What is the full form of dbms?"
+// },
+// {
+//   questions:"Who is the captain of Indian cricket team?"
+// },
+// {
+//   questions:"Who is the only captian who has won all the three ICC trophies?"
+// },
+// {
+//   questions:"Which movie of Amir Khan went to Oscars?"
+// },
+// {
+//   questions:"Where was 2010 football world cup held?"
+// }];
+
+
+const admin=new Admin([
+
+
+]);
+
+admin.question.push(q);
+admin.save();
+
 
 passport.use(User.createStrategy());
 
@@ -62,6 +95,7 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   }); 
 });
+
 
 
 app.get("/login", function (req, res) {
@@ -116,8 +150,8 @@ app.post('/login', function(req, res){
 
 app.get("/template", function (req, res) {
   if(req.isAuthenticated()){
-    console.log(admins);
-    res.render("template");
+    console.log(admin.question[0].questions);
+    res.render("template",{quest:admin});
 
   }
   else{
