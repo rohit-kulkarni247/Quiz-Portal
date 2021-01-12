@@ -37,74 +37,25 @@ const loginschema=new mongoose.Schema({
   username:String,
   password1:String,
   answer: [String],
+  questcount: {type:Number,default:0},
   versionKey: false
-});
-
-const questionschema=new mongoose.Schema({
-  question: [{
-    questions:String
-  }]
 });
 
 
 loginschema.plugin(passportLocalMongoose);
 
 const User = new mongoose.model("User", loginschema);
-const Admin= new mongoose.model("Admin",questionschema,);
 
-var q={questions:"Who will win US president elections?"};
-
-// var tempQuest=[  {
-//   questions:"Where is the statue of liberty situated?"
-// },
-// {
-// questions:"What is the full form of dbms?"
-// },
-// {
-//   questions:"Who is the captain of Indian cricket team?"
-// },
-// {
-//   questions:"Who is the only captian who has won all the three ICC trophies?"
-// },
-// {
-//   questions:"Which movie of Amir Khan went to Oscars?"
-// },
-// {
-//   questions:"Where was 2010 football world cup held?"
-// }];
+const Schema = mongoose.Schema; 
+const Quest = mongoose.model("Question", new Schema({}), "questions");
 
 
-const admin=new Admin([
 
+// Quest.find({}, function(err, doc){     
+//   console.log(doc[0].toObject().question); 
+//   console.log(typeof(doc[0]));
+// });
 
-]);
-
-admin.question.push(q);
-q={
-    questions:"Where is the statue of liberty situated?"
-  };
-  admin.question.push(q);
-  q={
-    questions:"What is the full form of dbms?"
-    };
-    admin.question.push(q);
-    q= {
-        questions:"Who is the captain of Indian cricket team?"
-      };
-      admin.question.push(q);
-    q={
-        questions:"Who is the only captian who has won all the three ICC trophies?"
-      };
-    admin.question.push(q);
-    q={
-        questions:"Which movie of Amir Khan went to Oscars?"
-      };
-    admin.question.push(q);
-    q={
-        questions:"Where was 2010 football world cup held?"
-      };
-    admin.question.push(q);
-admin.save();
 
 
 passport.use(User.createStrategy());
@@ -120,10 +71,33 @@ passport.deserializeUser(function(id, done) {
   }); 
 });
 
-
+// User.find({}, function(err,doc){
+//   console.log(doc);
+// });
 
 app.get("/login", function (req, res) {
   res.render("login");
+});
+
+
+app.get("/quiz", function (req, res) {
+  
+  if(req.isAuthenticated()){
+    let counter=req.user.questcount;
+    if(counter<6){
+
+      Quest.find({}, function(err, doc){     
+        res.render("quiz",{quest:doc,cnt:counter});
+        
+      });
+    }
+    else{
+      res.redirect("/done");
+    }
+  }
+  else{
+    res.redirect("/login");
+  }
 });
 
 app.get("/",function (req, res) {
@@ -162,38 +136,23 @@ app.post('/login', function(req, res){
     else{
       passport.authenticate("local")(req, res, function(){
           
-          res.redirect("/template");
+          res.redirect("/quiz");
       });
     }
   });
 });
 
-// app.get("/done", function (req, res) {
-//   res.render("done");
-// });
-var counter=0;
-app.get("/template", function (req, res) {
-  if(req.isAuthenticated()){
-    //console.log(admin.question);
-    if(counter<7){
-
-      res.render("template",{quest:admin,cnt:counter});
-      counter++;
-    }
-    else{
-      res.render("done");
-    }
-  }
-  else{
-    res.redirect("/login");
-  }
+app.get("/done", function (req, res) {
+  res.render("done");
 });
+
 var i=0;
 
 
 
-app.post("/template", function (req, res) {
+app.post("/quiz", function (req, res) {
   var id=req.user.id;
+  var counter=req.user.questcount;
   User.updateOne({_id:id},{
     $push: {
       answer:req.body.answer
@@ -204,7 +163,17 @@ app.post("/template", function (req, res) {
     if(!student) return res.send();
     
   })
-  res.redirect("/template");
+  res.redirect("/quiz");
+
+  User.updateOne({_id:id},{questcount:counter+1},function(err,docs){
+    if(err){
+      console.log(err);
+    } 
+    else{
+      console.log("questcount updated");
+    }
+      
+  });
 
   console.log(answer);
   i++;
