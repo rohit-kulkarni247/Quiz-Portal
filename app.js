@@ -51,12 +51,6 @@ const Quest = mongoose.model("Question", new Schema({}), "questions");
 
 
 
-// Quest.find({}, function(err, doc){     
-//   console.log(doc[0].toObject().question); 
-//   console.log(typeof(doc[0]));
-// });
-
-
 
 passport.use(User.createStrategy());
 
@@ -71,9 +65,7 @@ passport.deserializeUser(function(id, done) {
   }); 
 });
 
-// User.find({}, function(err,doc){
-//   console.log(doc);
-// });
+
 
 app.get("/login", function (req, res) {
   res.render("login");
@@ -146,8 +138,6 @@ app.get("/done", function (req, res) {
   res.render("done");
 });
 
-var i=0;
-
 
 
 app.post("/quiz", function (req, res) {
@@ -175,8 +165,8 @@ app.post("/quiz", function (req, res) {
       
   });
 
-  console.log(answer);
-  i++;
+  
+  
 });
 
 let port = process.env.PORT;
