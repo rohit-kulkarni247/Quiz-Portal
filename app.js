@@ -161,6 +161,11 @@ app.get("/done", function (req, res) {
   res.render("done");
 });
 
+app.get("/data",function (req, res) {
+  User.find({}, function(err, users) {
+    res.send({users: users});
+ });
+})
 
 
 app.post("/quiz", function (req, res) {
