@@ -35,9 +35,11 @@ mongoose.set("useCreateIndex", true);
 
 const loginschema=new mongoose.Schema({
   username:String,
-  password1:String,
+  password:String,
   answer: [String],
   questcount: {type:Number,default:0},
+  mobile:String,
+  marks:{type:Number,default:0},
   versionKey: false
 });
 
@@ -49,7 +51,12 @@ const User = new mongoose.model("User", loginschema);
 const Schema = mongoose.Schema; 
 const Quest = mongoose.model("Question", new Schema({}), "questions");
 
+const AnsSchema=mongoose.Schema;
+const UserAns=mongoose.model("Ans",new AnsSchema({}),"answers");
 
+// UserAns.find({},function(err, doc){
+//   console.log(typeof(doc[0].toObject().ans[0]));
+// })
 
 
 passport.use(User.createStrategy());
@@ -69,6 +76,22 @@ passport.deserializeUser(function(id, done) {
 
 app.get("/login", function (req, res) {
   res.render("login");
+});
+
+
+app.get("/index", function (req, res) {
+  res.render("index",{failed:""});
+});
+
+
+app.get("/instruction", function (req, res) {
+  if(req.isAuthenticated()){
+    res.render("Instruction");
+
+  }
+  else{
+    res.render("/index",{failed:"Username or password is invalid"});
+  }
 });
 
 
@@ -105,7 +128,7 @@ app.post("/singup", function(req, res){
         
         passport.authenticate("local")(req, res, function(){
             
-            res.redirect("/login");
+            res.redirect("/index");
         });
       }
   });
@@ -113,22 +136,22 @@ app.post("/singup", function(req, res){
 
 });
 
-app.post('/login', function(req, res){
+app.post('/index', function(req, res){
   const user=new User({
     username:req.body.username,
     password:req.body.password
+    
   });
 
   req.login(user, function(err){
     if(err){
-      
       console.log(err);
-
+      res.render("/index",{failed:"Invalid username or password"});
     }
     else{
       passport.authenticate("local")(req, res, function(){
-          
-          res.redirect("/quiz");
+        console.log("hello world");
+        res.redirect("/quiz");
       });
     }
   });
@@ -152,9 +175,37 @@ app.post("/quiz", function (req, res) {
     if(err) return err;
     if(!student) return res.send();
     
-  })
-  res.redirect("/quiz");
+  });
 
+  // var useranswer=req.body.answer;
+  // console.log(typeof(useranswer));
+  // UserAns.find({}, function(err, doc){     
+  //   var temp=doc[counter].toObject().ans;
+  //   temp.forEach(myfunction);
+  //   var m1=req.user.marks;
+  //   console.log(typeof(m1));
+  //   function myfunction(item){
+  //     console.log(item);
+  //     var n = item.localeCompare(useranswer);
+
+  //     if(n==0){
+
+  //       User.updateOne({_id:id},{marks:m1+1},function(err,docs){
+  //         if(err){
+  //           console.log(err);
+  //         } 
+  //         else{
+  //           console.log("marks updated");
+  //         }
+          
+  //       });
+        
+  //     }    
+  //   }
+    
+  // });
+
+  
   User.updateOne({_id:id},{questcount:counter+1},function(err,docs){
     if(err){
       console.log(err);
@@ -162,9 +213,12 @@ app.post("/quiz", function (req, res) {
     else{
       console.log("questcount updated");
     }
-      
+    
   });
 
+  // console.log(marks);
+  
+  res.redirect("/quiz");
   
   
 });

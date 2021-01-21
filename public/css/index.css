@@ -1,0 +1,484 @@
+body {
+    background-color: #000;
+    overflow:hidden;
+}
+
+/* Background */
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+    background-size: contain;
+    opacity:0.7;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+}
+
+/*.bg{
+    position: absolute;
+    margin-left:-1vw;
+    margin-top:-4.5vw;
+    z-index:-1;
+    overflow: hidden;
+}
+  .st0 {
+    position: relative;
+    fill: none;
+    stroke:#00AACC;/* #008C4A;
+    stroke-miterlimit: 10;
+    left:-1vw;
+    top:-1vw;
+  }
+  .st1 {
+    position: relative;
+    left:-1vw;
+    top:-1vw;
+    fill: none;
+    stroke:#002288;/* #d4af37;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+  }*/
+
+.nbc{
+    margin-right:1vw;
+} 
+.nb{
+    background-color: rgba(0,0,0,0.7)!important;
+    z-index:2;
+    font-size:18px;
+    color:white;
+}
+form{
+    position: absolute;
+    top:2.5vw;
+}
+.container-fluid{
+    height:100vh;
+    width: 100vw;
+}
+.title{
+    font-size:22px !important;
+    position: relative;
+    left:39%;
+    font-family:Roboto;
+}
+.logo{
+    height:40px;
+    width:115px;
+}
+.il{
+    height:40px;
+    width:115px;
+}
+.cre1{
+    margin-top:-12vw;
+    margin-left:5.5vw;
+    height:100px;
+    width:100px;
+    border-radius:50%;
+}
+.input-area{
+    position: absolute;
+    left:33%;
+	height:32vw;
+	width:24vw;
+    padding:3vw;
+    padding-top:5vw;
+    padding-left: 3vw;
+    margin:5vw;
+    margin-top:7vw;
+    margin-left: 27vw;
+    border:1.5px solid whitesmoke;
+    border-radius: 15px;
+    background-color: rgba(0,0,0,0.7);
+    color:white;
+    font-size: 18px;
+    font-family:Roboto;
+}
+.input-field{
+    background: transparent;
+    border:none;
+    margin-top:-0.5vw;
+    margin-bottom:0.6vw;
+    border-bottom: 1px solid whitesmoke;
+    border-spacing: 0.5vw;
+    width:18vw;
+    font-size:17px;
+    color:white;
+    font-family: sans-serif;
+    outline:none;
+    font-family:Roboto;
+}
+.submit-btn{
+    position: relative;
+    left:5vw;
+    margin-top:1vw;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width:8vw;
+    height:auto;
+    border-radius: 3px;
+    font-size: 22px;
+    background-color: #00AACC;
+    color:white;
+    border:none;
+    outline:none;
+    font-family:Roboto;
+}
+.submit-btn:hover{
+    transform:scale(1.10);
+    background-color: #00AACC;
+}
+.sign{
+    text-align: center;
+    margin-top: 2vw;
+    font-size: 15px;
+}
+a.su:link{
+    color:green !important;
+    text-decoration: none;
+    background:transparent;
+}
+a.abs{
+    text-decoration: none;
+    color:white;
+    font-size:18px;
+    font-family:Roboto;
+}
+a.ft{
+    color:white;
+    text-decoration:none;
+    outline: none;
+}
+.nt{
+    font-size:18px;
+}
+.cred{
+    height:280px;
+    width:310px;
+    margin-right:-4vw;
+    margin-bottom:1vw;
+    margin-left:-2vw;
+}
+.txt{
+    color:white;
+    font-size:40px;
+    font-weight:bold;
+    margin-left:1vw;
+    justify-content: center;
+}
+.stxt{
+    position: relative;
+    font-size:35px;
+    left:15vw;
+    bottom:4vw;
+    font-weight:500;
+    justify-content: center;
+}
+.en{
+    position: relative;
+    color:white;
+    font-size:80px;
+    font-weight:bold;
+    left:6vw;
+    top:-5vw;
+    justify-content: center;
+}
+
+/* Media Query */
+@media (max-width:1210px){
+    .input-area
+    {
+        height: 35vw;
+        width: 25vw;
+    }
+}
+
+@media (max-width:1139px){
+    .input-area
+    {
+        padding-top: 6vw;
+    }
+    .txt{
+        font-size: 35px;
+    }
+}
+
+ @media (max-width:1099px){
+    .input-area
+    {
+        height: 39vw;
+        width: 26vw;
+    }
+    .txt{
+        font-size: 30px;
+    }
+ }
+    
+@media (max-width:425px){
+    body{
+        overflow: auto;
+    }
+    .il{
+        display:none;
+    }
+    .cred{
+        height:100px;
+        width:110px;
+        margin-left:2vw;
+    }
+    .txt{
+        font-size:25px;
+    }
+    .stxt{
+        font-size:23px;
+        margin-left:4vw;
+    }
+    .en{
+        font-size:40px;
+        margin-left:7vw;
+        margin-top:-3vw;
+    }
+    .nb{
+        background-color: #000 !important;
+        opacity:1;
+        font-size:18px;
+    }
+    .nt{
+        font-size: 14px;
+    }
+    a.abs{
+        font-size:14px;
+    }
+    .logo{
+        height:35px;
+        width:100px;
+    }
+    .bg{
+        position: absolute;
+        margin-left:-4vw;
+        margin-top:-15vw;
+        background-size: cover;
+    }
+    .title{
+        font-size: 20px !important;
+        left:1vw;
+        margin-right:10vw;
+    }
+    .cre1{
+        height:90px;
+        width:90px;
+        margin-top:-34vw;
+        margin-left:13vw;
+    }
+    .input-area{
+        height:100vw;
+        width:65vw;
+        font-size: 18px;
+        margin-left:-14.5vw;
+        margin-top:72vw;
+        padding-left:8vw;
+        padding-top:15vw;
+    }
+    .input-field{
+        width:50vw;
+        font-size:16px;
+        background-color: transparent;
+        border:none;
+        border-bottom: 1px solid whitesmoke;
+    }
+    .submit-btn{
+        width:30vw;
+        margin-left:4vw;
+        margin-top:4vw;
+    }
+    .ico{
+        font-size:18px;
+    }
+    .sign{
+        position: relative;
+        margin-top:7vw;
+        margin-right: 7vw;
+        font-size: 14px;
+    }
+}
+@media(max-width:400px){
+    .input-area{
+        height:105vw;
+        width:70vw;
+        padding-left:12.5vw;
+        padding-top:14vw;
+        margin-left:-17vw;
+        margin-top:30vw;
+    }
+    .submit-btn{
+        margin-top:4.5vw;
+    }
+    .cre1{
+        margin-left:11vw;
+    }
+}
+@media(max-width:385px){
+    .input-area{
+        height:110vw;
+    }
+    .sign{
+        margin-top:10vw;
+        margin-right:8vw;
+        font-size: 14.5px;
+    }
+    .nt{
+        font-size:11.7px;
+        margin-left:2vw;
+    }
+    a.abs{
+        font-size:11.7px;
+    }
+}
+@media(max-width:376px){
+    .input-area{
+        position: absolute;
+        top:50vw;
+        height:100vw;
+        width:65vw;
+        padding-top:5vw;
+        margin-left:-15vw;
+        padding-left:-10vw;
+        
+    }
+    .input-field{
+        margin-left:-4.2vw;
+    }
+    .cre1{
+        height: 75px;
+        width:75px;
+        margin-left:10vw;
+        margin-top:-25vw;
+    }
+    .submit-btn{
+        margin-left:0.5vw;
+        margin-top:5vw;
+        font-size:18px;
+    }
+    .sign{
+        margin-top:7vw;
+        font-size: 12.5px;
+    }
+    .pad{
+        padding:50%;
+    }
+    .txt{
+        font-size:24px;
+    }
+    .en{
+        font-size:35px;
+        margin-left:8vw;
+        margin-top:-3vw;
+    }
+    .cred{
+        margin-left:-2vw;
+    }
+}
+@media(max-width:365px){
+    .input-area{
+        position: absolute;
+        top:52vw;
+        height:100vw;
+        width:68vw;
+        font-size:18px;
+        padding-top:6vw;
+    }
+    .txt{
+        font-size:22.55px;
+    }
+    .en{
+        margin-left:6vw;
+    }
+    .stxt{
+        font-size:21px;
+    }
+    .nt{
+        font-size:11px;
+        margin-left:2vw;
+    }
+    a.abs{
+        font-size:11px;
+    }
+    .cre1{
+        height:70px;
+        width:70px;
+        margin-left:11.2vw;
+        margin-top:-26vw;
+    }
+    .submit-btn{
+        margin-left: 0.5vw;
+    }
+}
+@media(max-width:325px){
+    a.title{
+        font-size:10px;
+    }
+    .input-area{
+        height: 95vw;
+        width:65vw;
+        font-size: 15px;
+        padding-left:9.5vw;
+        margin-top:35vw;
+    }
+    .cre1{
+        height:60px;   
+        width:60px;
+        margin-left:13.2vw;
+    }
+    .submit-btn{
+        font-size:15px;
+        margin-left:2vw;
+    }
+    .sign{
+        font-size: 12px;
+    }
+}
+@media(max-width:335px){
+    .sign{
+        margin-right:6.5vw;
+    }
+    .nt{
+        font-size:10.5px;
+        margin-left:2vw;
+    }
+    a.abs{
+        font-size:10.5px;
+    }
+    .txt{
+        font-size:18px;
+        margin-left:-1vw;
+    }
+    .stxt{
+        font-size:18px;
+    }
+    .en{
+        font-size:30px;
+        margin-top:-5vw;
+    }
+    .input-area{
+        height:95vw;
+    }
+
+}

@@ -1,0 +1,128 @@
+html {
+    height: 100%;
+  
+  }
+  body
+  {
+  background: linear-gradient(0deg,#103d3d, #27aca5, #b7dddc);
+  width: 100%;
+  
+  background-position: center;
+  background-size: cover;
+  /* overflow: hidden; */
+  /* font-family: 'IM Fell DW Pica', serif; */
+  /* font-family: 'BenchNine', sans-serif; */
+  font-family: 'Gruppo', cursive;
+  /* letter-spacing: 1px; */
+  position: relative;                
+  overflow: hidden;
+    
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+   
+  
+    
+  }
+  
+  /*card*/
+  .card
+  {
+    background: rgb(9,40,49);
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px rgb(20, 19, 19);
+  }
+  .card-header
+  {
+  border-bottom: 2px solid white;
+  }
+  
+  .card-footer
+  {
+  border-top: 2px solid white;
+  }
+  /*button*/
+  .btn
+  {
+    color:#0099cc;
+    background-color: #001122;
+    font-size:15px;
+    letter-spacing: 1px;
+    padding: 5px 20px;
+    border: 2px solid #0099cc;
+    
+  }
+  
+  .btn:hover {
+  color:white;
+  background-color: #0099cc;
+    font-size:15px;
+    letter-spacing: 1px;
+    padding: 5px 20px;
+    border: 2px solid #0099cc;
+    
+  
+  }
+  
+  .title{
+  font-size:22px !important;
+  position: relative;
+  left : 43vw;
+  font-family:Roboto;
+  }
+  
+  /* Bottom adjust*/
+  @media only screen and (max-width: 1256px) {#adjust{padding: 3% !important;}.title{left: 42vw;}}
+  @media only screen and (max-width: 768px) {#adjust{padding: 8% !important;}}
+  @media only screen and (max-width: 500px) {#adjust{padding: 12% !important;}#footer{font-size: 8px;}}
+  
+  
+  /* Animation of cards*/
+  
+  @keyframes fadeInUp {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+  
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+  }
+  
+  @-webkit-keyframes fadeInUp {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+  
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+  }
+  
+  .animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both
+  }
+  
+  .animatedFadeInUp {
+  opacity: 0
+  }
+  
+  .fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+  }
+  
+  /*For responsive*/
+  @media only screen and (max-width: 1023px) {.row{height: auto !important  ;}html{height: auto !important  ;} body{height: auto !important  ; overflow: auto !important;}.card{margin-top: 3vh !important;}}
+  @media only screen and (max-height: 1367px) and (min-height: 1365px)  {body{height: 97vh !important  ;}.card{margin-top: 18vh !important;}}
+  @media screen and (max-width: 1200px) and (min-width: 1023px) {.card-body{font-size: 14px !important;}.title{left: 41vw;}}
+  @media screen and (max-width: 1023px) and (min-width: 1000px) {.card-body{font-size: 16px !important;}.title{left: 40vw;}}
+  @media only screen and (max-width: 992px) {.logo1{display: none !important;}.title{margin-left: auto ;}}
+  @media (max-width:700px){.title{ font-size: 20px !important; padding-right: 40px !important;}}
+  @media (max-width:425px){.title{ font-size: 20px !important; padding-right: 40px !important;}}
+  @media (max-width:300px){.title{ font-size: 20px !important; margin-right: 40px !important;}}
