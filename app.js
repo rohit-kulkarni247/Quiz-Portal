@@ -72,17 +72,36 @@ passport.deserializeUser(function(id, done) {
   }); 
 });
 
-
+//get routes
+app.get("/",function (req, res) {
+  res.render("singup");
+});
 
 app.get("/login", function (req, res) {
   res.render("login");
 });
 
-
 app.get("/index", function (req, res) {
   res.render("index",{failed:""});
 });
 
+app.get("/done", function (req, res) {
+  res.render("done");
+});
+
+app.get("/data",function (req, res) {
+  User.find({}, function(err, users) {
+    res.send({users: users});
+ });
+});
+
+app.get("/our_team", function (req, res) {
+  res.render("our_team");
+});
+
+app.get("/web_team",function (req, res) {
+  res.render("wt_q");
+})
 
 app.get("/instruction", function (req, res) {
   if(req.isAuthenticated()){
@@ -94,15 +113,13 @@ app.get("/instruction", function (req, res) {
   }
 });
 
-
-app.get("/quiz", function (req, res) {
-  
+app.get("/quizfinal", function (req, res) {
   if(req.isAuthenticated()){
     let counter=req.user.questcount;
     if(counter<6){
 
       Quest.find({}, function(err, doc){     
-        res.render("quiz",{quest:doc,cnt:counter});
+        res.render("quizfinal",{quest:doc,cnt:counter});
         
       });
     }
@@ -111,14 +128,13 @@ app.get("/quiz", function (req, res) {
     }
   }
   else{
-    res.redirect("/login");
+    res.redirect("/index");
   }
 });
 
-app.get("/",function (req, res) {
-  res.render("singup");
-});
 
+
+//post routes
 app.post("/singup", function(req, res){
   User.register({username:req.body.username}, req.body.password, function(err,user){
       if(err){
@@ -151,24 +167,16 @@ app.post('/index', function(req, res){
     else{
       passport.authenticate("local")(req, res, function(){
         console.log("hello world");
-        res.redirect("/quiz");
+        res.redirect("/quizfinal");
       });
     }
   });
 });
 
-app.get("/done", function (req, res) {
-  res.render("done");
-});
-
-app.get("/data",function (req, res) {
-  User.find({}, function(err, users) {
-    res.send({users: users});
- });
-})
 
 
-app.post("/quiz", function (req, res) {
+
+app.post("/quizfinal", function (req, res) {
   var id=req.user.id;
   var counter=req.user.questcount;
   User.updateOne({_id:id},{
@@ -223,7 +231,7 @@ app.post("/quiz", function (req, res) {
 
   // console.log(marks);
   
-  res.redirect("/quiz");
+  res.redirect("/quizfinal");
   
   
 });
