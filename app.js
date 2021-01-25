@@ -77,22 +77,8 @@ app.get("/",function (req, res) {
   res.render("singup");
 });
 
-app.get("/login", function (req, res) {
-  res.render("login");
-});
-
 app.get("/index", function (req, res) {
   res.render("index",{failed:""});
-});
-
-app.get("/done", function (req, res) {
-  res.render("done");
-});
-
-app.get("/data",function (req, res) {
-  User.find({}, function(err, users) {
-    res.send({users: users});
- });
 });
 
 app.get("/our_team", function (req, res) {
@@ -109,8 +95,9 @@ app.get("/instruction", function (req, res) {
 
   }
   else{
-    res.render("/index",{failed:"Username or password is invalid"});
+    res.render("/index");
   }
+  // res.render("Instruction");
 });
 
 app.get("/quizfinal", function (req, res) {
@@ -132,6 +119,15 @@ app.get("/quizfinal", function (req, res) {
   }
 });
 
+app.get("/done", function (req, res) {
+  res.render("done");
+});
+
+app.get("/data",function (req, res) {
+  User.find({}, function(err, users) {
+    res.send({users: users});
+ });
+});
 
 
 //post routes
@@ -150,6 +146,17 @@ app.post("/singup", function(req, res){
   });
 
 
+});
+
+app.post("/instruction", function (req, res){
+  var checkedBody = req.body;
+  console.log(checkedBody);
+    if(checkedBody.check1 == 'on'){
+      res.redirect("quizfinal");
+    }
+    else{
+      res.redirect("/instruction");
+    }
 });
 
 app.post('/index', function(req, res){

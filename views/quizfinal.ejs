@@ -63,20 +63,20 @@
            <div class="col-lg-8 col-12 col-md-7 " id="two" >
                 <div class="row" id="ques" >
                     <div class="col-lg-12">
-                        <p id id="question"> <%= quest[cnt].toObject().question %>
+                        <p id="question"> <%= quest[cnt].toObject().question %>
                         </p>
                     </div>
                 </div>
 
-                <div class="row no-gutters">
+                <!-- <div class="row no-gutters">
                     <div class="col-lg-12">
                         <img src="images/ques.jpg"  class="img-fluid" id="responsive" width="600" height="400">
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row no-gutters">
                     <div class="col-lg-12">
-                        <form method="post" action="/quizfinal">
+                        <form method="post" action="/quizfinal" name="xyz">
                             <script type=text/javascript>countDown(30, "countdown")
                                 var wait=setTimeout("document.xyz.submit();",30000);
                             </script>
