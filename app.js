@@ -61,6 +61,37 @@ const UserAns=mongoose.model("Ans",new AnsSchema({}),"answers");
 
 passport.use(User.createStrategy());
 
+// passport.use(
+//   new LocalStrategy({ username: 'username',passReqToCallback: true }, (req,username,password, done) => {
+//     // Match user
+
+//     https.get(process.env.CLIENT_URL,function(response){
+//       response.on("data", function(data){
+//         res.send(JSON.parse(data));
+//       })
+//     });
+//     User.findOne({username: username})
+//       .then(user => {
+//         if (!user) {
+//           return done(null, false, { message: 'That email is not registered' });
+//         }
+//         // console.log(req.body.phone);
+//         if(password==user.password){
+
+//           if(user.phoneno==req.body.phone){
+//             return done(null, user);
+//           }
+//           else {
+//             return done(null, false, { message: 'Password incorrect' });
+//           }
+//         }
+//         else {
+//           return done(null, false, { message: 'Password incorrect' });
+//         }
+//       })
+//       .catch(err => console.log(err));
+//   })
+// );
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -150,9 +181,9 @@ app.post("/singup", function(req, res){
 
 app.post("/instruction", function (req, res){
   var checkedBody = req.body;
-  console.log(checkedBody);
+  // console.log(checkedBody);
     if(checkedBody.check1 == 'on'){
-      res.redirect("quizfinal");
+      res.redirect("/quizfinal");
     }
     else{
       res.redirect("/instruction");
@@ -173,8 +204,8 @@ app.post('/index', function(req, res){
     }
     else{
       passport.authenticate("local")(req, res, function(){
-        console.log("hello world");
-        res.redirect("/quizfinal");
+        // console.log("hello world");
+        res.redirect("/instruction");
       });
     }
   });
@@ -197,33 +228,30 @@ app.post("/quizfinal", function (req, res) {
     
   });
 
-  // var useranswer=req.body.answer;
-  // console.log(typeof(useranswer));
-  // UserAns.find({}, function(err, doc){     
-  //   var temp=doc[counter].toObject().ans;
-  //   temp.forEach(myfunction);
-  //   var m1=req.user.marks;
-  //   console.log(typeof(m1));
-  //   function myfunction(item){
-  //     console.log(item);
-  //     var n = item.localeCompare(useranswer);
-
-  //     if(n==0){
-
-  //       User.updateOne({_id:id},{marks:m1+1},function(err,docs){
-  //         if(err){
-  //           console.log(err);
-  //         } 
-  //         else{
-  //           console.log("marks updated");
-  //         }
-          
-  //       });
+  var useranswer=req.body.answer;
+  UserAns.find({}, function(err, doc){     
+    var temp=doc[counter].toObject().ans;
+    temp.forEach(myfunction);
+    function myfunction(item){
+      var m1=req.user.marks;
+      var n = item.localeCompare(useranswer);
+      if(n==0){
+        m1=m1+1;
         
-  //     }    
-  //   }
+        User.updateOne({_id:id},{marks:m1},function(err,docs){
+          if(err){
+            console.log(err);
+          } 
+          else{
+            console.log("marks updated");
+          }
+          
+        });
+        
+      }    
+    }
     
-  // });
+  });
 
   
   User.updateOne({_id:id},{questcount:counter+1},function(err,docs){

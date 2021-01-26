@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Credenz Quiz</title>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
@@ -34,6 +34,10 @@
             sec--;
             var timer =setTimeout('countDown('+sec+',"'+elem+'")', 1000 );
         }
+
+        
+       
+
     </script>
 </head>
 <body>
@@ -81,8 +85,15 @@
                                 var wait=setTimeout("document.xyz.submit();",30000);
                             </script>
                             <div class="form-row">
-                                <input type="text" placeholder="Answer" id="field">
-                                <button id="btn" type="submit" >Submit</button>
+                                <input type="text" placeholder="Answer" id="field" name="answer">
+                                <button id="btn" type="submit" name="submit" >Submit</button>
+                                <script>
+                                    function submitPoll(){
+                                        document.getElementById("btn").disabled = true;
+                                        setTimeout(function(){document.getElementById("btn").disabled = false;},5000);
+                                    }
+                                    submitPoll();
+                                </script>
                             </div>     
                         </form>
                     </div>
