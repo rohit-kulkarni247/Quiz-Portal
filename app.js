@@ -157,7 +157,12 @@ app.get("/quizfinal", function (req, res) {
 });
 
 app.get("/complete", function (req, res) {
-  res.render("complete");
+  if(req.isAuthenticated()){
+    res.render("complete");
+  }
+  else{
+    res.redirect("/index");
+  }
 });
 
 app.get("/data",function (req, res) {
@@ -280,10 +285,10 @@ app.post("/quizfinal", function (req, res) {
 });
 
 // logout
-// app.get("/logout", function(req, res){
-//   req.logout();
-//   res.redirect("/index");
-// });
+app.get("/logout", function(req, res){
+  req.logout();
+  res.redirect("/index");
+});
 
 let port = process.env.PORT;
 if (port == null || port == "") {
