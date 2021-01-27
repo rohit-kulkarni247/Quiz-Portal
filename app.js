@@ -1,6 +1,6 @@
 //jshint version:6
 
-//require("dotenv").config();
+require("dotenv").config();
 const express = require("express");
 const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
@@ -21,7 +21,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use(session({
-  secret: 'My little secret of football tactics.',
+  secret: process.env.CLIENT_SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -31,10 +31,7 @@ app.use(passport.session());
 app.use(flash());
 
 
-mongoose.connect("mongodb://user_session:qwerty123@cluster0-shard-00-00.lgrab.mongodb.net:27017,cluster0-shard-00-01.lgrab.mongodb.net:27017,cluster0-shard-00-02.lgrab.mongodb.net:27017/quizDB?ssl=true&replicaSet=atlas-n16tnt-shard-0&authSource=admin&retryWrites=true&w=majority", {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
+mongoose.connect(process.env.MONGODB_URL, {useUnifiedTopology: true, useNewUrlParser: true});
 
 mongoose.set("useCreateIndex", true);
 
