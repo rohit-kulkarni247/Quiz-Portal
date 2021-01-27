@@ -239,6 +239,8 @@ app.post("/quizfinal", function (req, res) {
     var temp=doc[counter].toObject().ans;
     temp.forEach(myfunction);
     function myfunction(item){
+      item=item.toLowerCase();
+      useranswer=useranswer.toLowerCase();
       var m1=req.user.marks;
       var n = item.localeCompare(useranswer);
       if(n==0){
