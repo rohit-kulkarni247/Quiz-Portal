@@ -1,74 +1,67 @@
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
- body{
-      margin:0;
-    padding:0;
-    background: linear-gradient(to right bottom, #002244, rgb(88, 173, 243));
-    
-      font-family: sans-serif;
-    
- }
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right bottom, #002244, rgb(88, 173, 243));
 
- body {
- background: linear-gradient(to right bottom, #002244, rgb(88, 173, 243));
+  font-family: sans-serif;
 }
-body::before{
-   content:"";
-   position: absolute;
-   left:0;
-   top:0;
-   width:100vw;
-   height:100vh;
-   backdrop-filter:blur(100px);
- }
- #pisblogo{
-    
-    height: 40px;
-    width: 115px;
+
+body {
+  background: linear-gradient(to right bottom, #002244, rgb(88, 173, 243));
 }
-#cretronixlogo{
-     height: 40px;
-    width: 65px;
-    margin-left: -0.8vw;
+body::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(100px);
 }
-#tytext{
-	height: 20vh;
-	font-size: 1.85rem;
-	padding-top: 6.3vh;
-	
+#pisblogo {
+  height: 40px;
+  width: 115px;
 }
-#eyebox{
-	height: 30vh;
+#cretronixlogo {
+  height: 40px;
+  width: 65px;
+  margin-left: -0.8vw;
 }
-#maincol{
-    margin-left: 16.6vw;
-    padding: 0;
-    margin-top: 5.5vh;
-    background: ;
-    height: 72vh;
-    border: 0px;
-    font-family: sans-serif;
-    
-    
-    width: 70vw;
-    border-radius: 15px;
+#tytext {
+  height: 20vh;
+  font-size: 1.85rem;
+  padding-top: 6.3vh;
 }
-.glow{
+#eyebox {
+  height: 30vh;
+}
+#maincol {
+  margin-left: 16.6vw;
+  padding: 0;
+  margin-top: 5.5vh;
+  /* background: ; */
+  height: 72vh;
+  border: 0px;
+  font-family: sans-serif;
+
+  width: 70vw;
+  border-radius: 15px;
+}
+.glow {
   color: white;
-  text-align: center; 
+  text-align: center;
 }
-#titletext{
+#titletext {
   margin-left: 41.3vw;
 }
-#tickbox{
+#tickbox {
   margin-left: 5vw;
 }
-
- 
-
-
 
 .wrapper {
   width: 100px;
@@ -76,7 +69,7 @@ body::before{
 }
 
 .checkmark {
-  stroke: #FFFFFF;
+  stroke: #ffffff;
   stroke-dashoffset: 745.74853515625;
   stroke-dasharray: 745.74853515625;
   animation: dash 3s ease-out forwards infinite;
@@ -91,424 +84,383 @@ body::before{
   }
 }
 
-
-
-
-@media (max-width: 426px){
-#titletext{
-  margin-left: 23vw;
-  font: 20px ROBOTO;
-}
-#tytext{
-  font-size: 1.2rem;
-}
-#tickbox{
-  margin-left: 0vw;
-}
-#pisblogo{
+@media (max-width: 426px) {
+  #titletext {
+    margin-left: 23vw;
+    font: 20px ROBOTO;
+  }
+  #tytext {
+    font-size: 1.2rem;
+  }
+  #tickbox {
+    margin-left: 0vw;
+  }
+  #pisblogo {
     margin-left: 1vw;
     height: 30px;
     width: 90px;
-}
-#cretronixlogo{
-     height: 35px;
+  }
+  #cretronixlogo {
+    height: 35px;
     width: 55px;
     margin-left: -0.8vw;
-}
-#maincol{
+  }
+  #maincol {
     margin-left: 8.8vw;
     padding: 0;
     margin-top: 11.5vh;
-    background: ;
+    /* background: ; */
     height: 72vh;
     border: 0px;
     font-family: sans-serif;
     width: 70vw;
     border-radius: 15px;
+  }
+  footer {
+    margin-top: 1vh;
+  }
 }
-footer{
-  margin-top: 1vh;
-}
-
-}
-@media (max-width: 385px){
-#titletext{
-  margin-left: 15vw;
-  font: 20px ROBOTO;
-}
-#tytext{
-  font-size: 1.2rem;
-}
-#tickbox{
-  margin-left: 0vw;
-}
-#pisblogo{
+@media (max-width: 385px) {
+  #titletext {
+    margin-left: 15vw;
+    font: 20px ROBOTO;
+  }
+  #tytext {
+    font-size: 1.2rem;
+  }
+  #tickbox {
+    margin-left: 0vw;
+  }
+  #pisblogo {
     margin-left: 1vw;
     height: 30px;
     width: 90px;
-}
-#cretronixlogo{
-     height: 35px;
+  }
+  #cretronixlogo {
+    height: 35px;
     width: 55px;
     margin-left: -0.8vw;
-}
-#maincol{
+  }
+  #maincol {
     margin-left: 8.8vw;
     padding: 0;
     margin-top: 9vh;
-    background: ;
+    /* background: ; */
     height: 72vh;
     border: 0px;
     font-family: sans-serif;
     width: 70vw;
     border-radius: 15px;
+  }
+  footer {
+    margin-top: 1vh;
+  }
 }
-footer{
-  margin-top: 1vh;
-}
-}
-@media (max-width: 376px){
-#titletext{
-  margin-left: 15vw;
-  font: 20px ROBOTO;
-}
-#tytext{
-  font-size: 1.2rem;
-}
-#tickbox{
-  margin-left: 0vw;
-}
-#pisblogo{
+@media (max-width: 376px) {
+  #titletext {
+    margin-left: 15vw;
+    font: 20px ROBOTO;
+  }
+  #tytext {
+    font-size: 1.2rem;
+  }
+  #tickbox {
+    margin-left: 0vw;
+  }
+  #pisblogo {
     margin-left: 1vw;
     height: 30px;
     width: 90px;
-}
-#cretronixlogo{
-     height: 35px;
+  }
+  #cretronixlogo {
+    height: 35px;
     width: 55px;
     margin-left: -0.8vw;
-}
-#maincol{
+  }
+  #maincol {
     margin-left: 8.8vw;
     padding: 0;
     margin-top: 11.3vh;
-    background: ;
+    /* background: ; */
     height: 72vh;
     border: 0px;
     font-family: sans-serif;
     width: 70vw;
     border-radius: 15px;
+  }
+  footer {
+    margin-top: 2vh;
+  }
 }
-footer{
-  margin-top: 2vh;
-}
-}
-@media (max-width: 361px){
-#titletext{
-  margin-left: 15vw;
-  font: 20px ROBOTO;
-}
-#tytext{
-  font-size: 1.2rem;
-}
-#tickbox{
-  margin-left: 0vw;
-}
-#pisblogo{
-    margin-left: 1vw;
-    height: 30px;
-    width: 90px;
-}
-#cretronixlogo{
-     height: 35px;
-    width: 55px;
-    margin-left: -0.8vw;
-}
-#maincol{
-    margin-left: 8.8vw;
-    padding: 0;
-    margin-top: 8vh;
-    background: ;
-    height: 72vh;
-    border: 0px;
-    font-family: sans-serif;
-    width: 70vw;
-    border-radius: 15px;
-}
-footer{
-  margin-top: 2vh;
-}
-}
-@media (max-width: 335px){
-#titletext{
-  margin-left: 10vw;
-  font: 20px ROBOTO;
-}
-#tytext{
-  font-size: 1.2rem;
-}
-#tickbox{
-  margin-left: 0vw;
-}
-#pisblogo{
-    margin-left: 1vw;
-    height: 30px;
-    width: 90px;
-}
-#cretronixlogo{
-     height: 35px;
-    width: 55px;
-    margin-left: -0.8vw;
-}
-#maincol{
-    margin-left: 8.8vw;
-    padding: 0;
-    margin-top: 12vh;
-    background: ;
-    height: 72vh;
-    border: 0px;
-    font-family: sans-serif;
-    width: 70vw;
-    border-radius: 15px;
-}
-@media (max-width: 323px){
-#titletext{
-  margin-left: 10vw;
-  font: 20px ROBOTO;
-}
-#tytext{
-  font-size: 1.2rem;
-}
-#tickbox{
-  margin-left: 0vw;
-}
-#pisblogo{
-    margin-left: 1vw;
-    height: 30px;
-    width: 90px;
-}
-#cretronixlogo{
-     height: 35px;
-    width: 55px;
-    margin-left: -0.8vw;
-}
-#maincol{
-    margin-left: 8.8vw;
-    padding: 0;
-    margin-top: 8vh;
-    background: ;
-    height: 72vh;
-    border: 0px;
-    font-family: sans-serif;
-    width: 70vw;
-    border-radius: 15px;
-}
-footer{
-  margin-top: 3.5vh;
-}
-}
-@media (min-width: 768px){
-  footer{
-    margin-top: 4vh;
-
-  }
-  #maincol{
-    margin-top: 3vh;
-  }
-  #titletext{
-    margin-left: 33vw;
-  }
-  #tickbox{
-    margin-top: 3vh;
-  }
-
-}
-@media (min-width: 1024px){
-  footer{
-    margin-top: 4.2vh;
-
-  }
-  #maincol{
-    margin-top: 8vh;
-  }
-  #titletext{
-    margin-left: 37vw;
-  }
-  #tickbox{
-    margin-top: 0vh;
-  }
-
-}
-@media (min-width: 1200px){
-  footer{
-    margin-top: 4.2vh;
-
-  }
-  #maincol{
-    margin-top: 7vh;
-  }
-  #titletext{
-    margin-left: 41vw;
-  }
-  #tickbox{
-    margin-top: 0vh;
-  }
-
-}
-@media (min-width: 1300px){
-  footer{
-    margin-top: 4.2vh;
-
-  }
-  #maincol{
-    margin-top: 8vh;
-  }
-  #titletext{
-    margin-left: 41vw;
-  }
-  #tickbox{
-    margin-top: 0vh;
-  }
-
-}
-@media (min-width: 1400px){
-  footer{
-    margin-top: 4.2vh;
-
-  }
-  #maincol{
-    margin-top: 10.5vh;
-  }
-  #titletext{
-    margin-left: 41vw;
-  }
-  #tickbox{
-    margin-top: 0vh;
-  }
-
-}
-@media (min-width: 1440px){
-  
-  #maincol{
-    margin-top: 11.5vh;
-  }
-  #titletext{
-    margin-left: 41vw;
-  }
-  
-
-}
-@media (min-width: 1500px){
-  
-  #maincol{
-    margin-top: 12vh;
-  }
-  #titletext{
-    margin-left: 41vw;
-  }
-  #tytext{
-    font-size: 1.9rem;
-  }
-  
-
-}
-@media (min-width: 1600px){
-  
-  #maincol{
-    margin-top: 13vh;
-  }
-  #titletext{
-    margin-left: 44vw;
-  }
-  #tytext{
-    font-size: 1.95rem;
-  }
-  
-
-}
-@media (min-width: 1700px){
-  
-  #maincol{
-    margin-top: 14vh;
-  }
-  #titletext{
-    margin-left: 43vw;
-    font-size: 25px;
-  }
-  #tytext{
-    font-size: 2rem;
-  }
-  
-
-}
-@media (min-width: 1800px){
-  
-  #maincol{
-    margin-top: 14.5vh;
-  }
-  #titletext{
-    margin-left: 44vw;
-    font-size: 25px;
-  }
-  #tytext{
-    font-size: 2.3rem;
-  }
-  
-
-}
-@media (min-width: 1900px){
-  
-  #maincol{
-    margin-top: 15vh;
-  }
-  #titletext{
-    margin-left: 44vw;
-    font-size: 25px;
-  }
-  #tytext{
-    font-size: 2.8rem;
-  }
-  
-
-}
-@media (min-width: 1920px){
-  
-  #maincol{
-    margin-top: 16vh;
-  }
-  #titletext{
-    margin-left: 44vw;
-    font-size: 25px;
-  }
-  #tytext{
-    font-size: 3rem;
-  }
-  
-
-}
-@media (min-width: 2000px){
-  
-  #maincol{
-    margin-top: 16.5vh;
-  }
-  #titletext{
-    margin-left: 44vw;
-    font-size: 25px;
-  }
-  #tytext{
-    font-size: 3.2rem;
-  }
-  
-
-}
-
-
-
-@media (min-width: 1200px){
-	.bar a{
+@media (max-width: 361px) {
+  #titletext {
+    margin-left: 15vw;
     font: 20px ROBOTO;
-    margin-left: 39vw;
-     
+  }
+  #tytext {
+    font-size: 1.2rem;
+  }
+  #tickbox {
+    margin-left: 0vw;
+  }
+  #pisblogo {
+    margin-left: 1vw;
+    height: 30px;
+    width: 90px;
+  }
+  #cretronixlogo {
+    height: 35px;
+    width: 55px;
+    margin-left: -0.8vw;
+  }
+  #maincol {
+    margin-left: 8.8vw;
+    padding: 0;
+    margin-top: 8vh;
+    /* background: ; */
+    height: 72vh;
+    border: 0px;
+    font-family: sans-serif;
+    width: 70vw;
+    border-radius: 15px;
+  }
+  footer {
+    margin-top: 2vh;
+  }
 }
+@media (max-width: 335px) {
+  #titletext {
+    margin-left: 10vw;
+    font: 20px ROBOTO;
+  }
+  #tytext {
+    font-size: 1.2rem;
+  }
+  #tickbox {
+    margin-left: 0vw;
+  }
+  #pisblogo {
+    margin-left: 1vw;
+    height: 30px;
+    width: 90px;
+  }
+  #cretronixlogo {
+    height: 35px;
+    width: 55px;
+    margin-left: -0.8vw;
+  }
+  #maincol {
+    margin-left: 8.8vw;
+    padding: 0;
+    margin-top: 12vh;
+    /* background: ; */
+    height: 72vh;
+    border: 0px;
+    font-family: sans-serif;
+    width: 70vw;
+    border-radius: 15px;
+  }
+  @media (max-width: 323px) {
+    #titletext {
+      margin-left: 10vw;
+      font: 20px ROBOTO;
+    }
+    #tytext {
+      font-size: 1.2rem;
+    }
+    #tickbox {
+      margin-left: 0vw;
+    }
+    #pisblogo {
+      margin-left: 1vw;
+      height: 30px;
+      width: 90px;
+    }
+    #cretronixlogo {
+      height: 35px;
+      width: 55px;
+      margin-left: -0.8vw;
+    }
+    #maincol {
+      margin-left: 8.8vw;
+      padding: 0;
+      margin-top: 8vh;
+      /* background: ; */
+      height: 72vh;
+      border: 0px;
+      font-family: sans-serif;
+      width: 70vw;
+      border-radius: 15px;
+    }
+    footer {
+      margin-top: 3.5vh;
+    }
+  }
+  @media (min-width: 768px) {
+    footer {
+      margin-top: 4vh;
+    }
+    #maincol {
+      margin-top: 3vh;
+    }
+    #titletext {
+      margin-left: 33vw;
+    }
+    #tickbox {
+      margin-top: 3vh;
+    }
+  }
+  @media (min-width: 1024px) {
+    footer {
+      margin-top: 4.2vh;
+    }
+    #maincol {
+      margin-top: 8vh;
+    }
+    #titletext {
+      margin-left: 37vw;
+    }
+    #tickbox {
+      margin-top: 0vh;
+    }
+  }
+  @media (min-width: 1200px) {
+    footer {
+      margin-top: 4.2vh;
+    }
+    #maincol {
+      margin-top: 7vh;
+    }
+    #titletext {
+      margin-left: 41vw;
+    }
+    #tickbox {
+      margin-top: 0vh;
+    }
+  }
+  @media (min-width: 1300px) {
+    footer {
+      margin-top: 4.2vh;
+    }
+    #maincol {
+      margin-top: 8vh;
+    }
+    #titletext {
+      margin-left: 41vw;
+    }
+    #tickbox {
+      margin-top: 0vh;
+    }
+  }
+  @media (min-width: 1400px) {
+    footer {
+      margin-top: 4.2vh;
+    }
+    #maincol {
+      margin-top: 10.5vh;
+    }
+    #titletext {
+      margin-left: 41vw;
+    }
+    #tickbox {
+      margin-top: 0vh;
+    }
+  }
+  @media (min-width: 1440px) {
+    #maincol {
+      margin-top: 11.5vh;
+    }
+    #titletext {
+      margin-left: 41vw;
+    }
+  }
+  @media (min-width: 1500px) {
+    #maincol {
+      margin-top: 12vh;
+    }
+    #titletext {
+      margin-left: 41vw;
+    }
+    #tytext {
+      font-size: 1.9rem;
+    }
+  }
+  @media (min-width: 1600px) {
+    #maincol {
+      margin-top: 13vh;
+    }
+    #titletext {
+      margin-left: 44vw;
+    }
+    #tytext {
+      font-size: 1.95rem;
+    }
+  }
+  @media (min-width: 1700px) {
+    #maincol {
+      margin-top: 14vh;
+    }
+    #titletext {
+      margin-left: 43vw;
+      font-size: 25px;
+    }
+    #tytext {
+      font-size: 2rem;
+    }
+  }
+  @media (min-width: 1800px) {
+    #maincol {
+      margin-top: 14.5vh;
+    }
+    #titletext {
+      margin-left: 44vw;
+      font-size: 25px;
+    }
+    #tytext {
+      font-size: 2.3rem;
+    }
+  }
+  @media (min-width: 1900px) {
+    #maincol {
+      margin-top: 15vh;
+    }
+    #titletext {
+      margin-left: 44vw;
+      font-size: 25px;
+    }
+    #tytext {
+      font-size: 2.8rem;
+    }
+  }
+  @media (min-width: 1920px) {
+    #maincol {
+      margin-top: 16vh;
+    }
+    #titletext {
+      margin-left: 44vw;
+      font-size: 25px;
+    }
+    #tytext {
+      font-size: 3rem;
+    }
+  }
+  @media (min-width: 2000px) {
+    #maincol {
+      margin-top: 16.5vh;
+    }
+    #titletext {
+      margin-left: 44vw;
+      font-size: 25px;
+    }
+    #tytext {
+      font-size: 3.2rem;
+    }
+  }
 
+  @media (min-width: 1200px) {
+    .bar a {
+      font: 20px ROBOTO;
+      margin-left: 39vw;
+    }
+  }
 }
