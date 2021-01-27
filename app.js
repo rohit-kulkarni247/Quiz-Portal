@@ -7,6 +7,10 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const passportLocalMongoose=require('passport-local-mongoose');
 const session=require('express-session');
+const LocalStrategy = require("passport-local").Strategy;
+const flash= require("connect-flash");
+const https=require("https");
+
 
 const app = express();
 
@@ -24,6 +28,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
 
 mongoose.connect("mongodb://user_session:qwerty123@cluster0-shard-00-00.lgrab.mongodb.net:27017,cluster0-shard-00-01.lgrab.mongodb.net:27017,cluster0-shard-00-02.lgrab.mongodb.net:27017/quizDB?ssl=true&replicaSet=atlas-n16tnt-shard-0&authSource=admin&retryWrites=true&w=majority", {
   useUnifiedTopology: true,
@@ -59,39 +65,42 @@ const UserAns=mongoose.model("Ans",new AnsSchema({}),"answers");
 // })
 
 
-passport.use(User.createStrategy());
+// passport.use(User.createStrategy());
 
-// passport.use(
-//   new LocalStrategy({ username: 'username',passReqToCallback: true }, (req,username,password, done) => {
-//     // Match user
+passport.use(
+  new LocalStrategy({ username: 'username',passReqToCallback: true }, (req,username,password, done) => {
+    // Match user
 
-//     https.get(process.env.CLIENT_URL,function(response){
-//       response.on("data", function(data){
-//         res.send(JSON.parse(data));
-//       })
-//     });
-//     User.findOne({username: username})
-//       .then(user => {
-//         if (!user) {
-//           return done(null, false, { message: 'That email is not registered' });
-//         }
-//         // console.log(req.body.phone);
-//         if(password==user.password){
+    // https.get(process.env.CLIENT_URL,function(response){
+    //   response.on("data", function(data){
+    //     res.send(JSON.parse(data));
+    //   })
+    // });
+    User.findOne({username: username})
+      .then(user => {
+        if (!user) {
+          done(null, false, { message: 'That email is not registered' });
+          throw new Error("email not registered");
+        }
+        // console.log(req.body.phone);
+        if(password==user.password){
 
-//           if(user.phoneno==req.body.phone){
-//             return done(null, user);
-//           }
-//           else {
-//             return done(null, false, { message: 'Password incorrect' });
-//           }
-//         }
-//         else {
-//           return done(null, false, { message: 'Password incorrect' });
-//         }
-//       })
-//       .catch(err => console.log(err));
-//   })
-// );
+          if(user.mobile==req.body.mobile){
+            return done(null, user);
+          }
+          else {
+            done(null, false, { message: 'Mobile number incorrect' });
+            throw new Error("mobile number incorrect");
+          }
+        }
+        else {
+          done(null, false, { message: 'Password incorrect' });
+          throw new Error("password incorrect");
+        }
+      })
+      .catch(err => console.log(err));
+  })
+);
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -126,7 +135,7 @@ app.get("/instruction", function (req, res) {
 
   }
   else{
-    res.render("/index");
+    res.redirect("/index");
   }
   // res.render("Instruction");
 });
@@ -163,18 +172,18 @@ app.get("/data",function (req, res) {
 
 //post routes
 app.post("/singup", function(req, res){
-  User.register({username:req.body.username}, req.body.password, function(err,user){
-      if(err){
-        console.log(err);
-        res.redirect("/singup");
-      }else{
-        
-        passport.authenticate("local")(req, res, function(){
-            
-            res.redirect("/index");
-        });
-      }
+  const { username, password, mobile } = req.body;
+  const newUser = new User({
+    username,
+    password, 
+    mobile
   });
+
+  newUser.save()
+      .then(user => {console.log('You are now registered and can log in');
+          res.redirect('/index');
+      })
+      .catch(err => console.log(err));
 
 
 });
@@ -190,25 +199,25 @@ app.post("/instruction", function (req, res){
     }
 });
 
-app.post('/index', function(req, res){
-  const user=new User({
-    username:req.body.username,
-    password:req.body.password
-    
-  });
-
-  req.login(user, function(err){
-    if(err){
-      console.log(err);
-      res.render("/index",{failed:"Invalid username or password"});
-    }
-    else{
-      passport.authenticate("local")(req, res, function(){
-        // console.log("hello world");
-        res.redirect("/instruction");
+app.post('/index', function(req, res, next){
+  passport.authenticate("local", 
+    function(err, user, info) {
+      if (err) { 
+        console.log(err);
+        // return next(err);
+       }
+      if (!user) { 
+        res.render("index",{failed:"Invalid details entered"}); 
+      }
+      req.logIn(user, function(err) {
+        if (err) { 
+          console.log("hello");
+          return next(err); 
+        }
+        return res.redirect("/instruction");
       });
     }
-  });
+  )(req, res, next);
 });
 
 
