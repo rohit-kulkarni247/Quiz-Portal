@@ -148,7 +148,7 @@ app.get("/quizfinal", function (req, res) {
       });
     }
     else{
-      res.redirect("/done");
+      res.redirect("/complete");
     }
   }
   else{
@@ -156,8 +156,8 @@ app.get("/quizfinal", function (req, res) {
   }
 });
 
-app.get("/done", function (req, res) {
-  res.render("done");
+app.get("/complete", function (req, res) {
+  res.render("complete");
 });
 
 app.get("/data",function (req, res) {
@@ -278,6 +278,12 @@ app.post("/quizfinal", function (req, res) {
   
   
 });
+
+// logout
+// app.get("/logout", function(req, res){
+//   req.logout();
+//   res.redirect("/index");
+// });
 
 let port = process.env.PORT;
 if (port == null || port == "") {
