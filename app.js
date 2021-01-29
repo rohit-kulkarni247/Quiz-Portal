@@ -52,10 +52,10 @@ loginschema.plugin(passportLocalMongoose);
 const User = new mongoose.model("User", loginschema);
 
 const Schema = mongoose.Schema; 
-const Quest = mongoose.model("Question", new Schema({}), "questions");
+const Quest = mongoose.model("Question", new Schema({}), "MELA");
 
 const AnsSchema=mongoose.Schema;
-const UserAns=mongoose.model("Ans",new AnsSchema({}),"answers");
+const UserAns=mongoose.model("Ans",new AnsSchema({}),"MELA_ANSWERS");
 
 // UserAns.find({},function(err, doc){
 //   console.log(typeof(doc[0].toObject().ans[0]));
@@ -140,7 +140,7 @@ app.get("/instruction", function (req, res) {
 app.get("/quizfinal", function (req, res) {
   if(req.isAuthenticated()){
     let counter=req.user.questcount;
-    if(counter<6){
+    if(counter<20){
 
       Quest.find({}, function(err, doc){     
         res.render("quizfinal",{quest:doc,cnt:counter});
