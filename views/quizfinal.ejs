@@ -37,7 +37,23 @@
             var timer =setTimeout('countDown('+sec+',"'+elem+'")', 1000 );
         }
 
-        
+        $('#question').bind("cut copy paste",function(e) {
+            e.preventDefault();
+        });
+
+        $(document).ready(function() {
+            $('#question').bind('copy paste cut',function(e) { 
+                e.preventDefault(); //disable cut,copy,paste
+                alert('cut,copy & paste options are disabled !!');
+            });
+        });
+
+        $(document).ready(function() {
+            $('#field').bind('copy paste cut',function(e) { 
+                e.preventDefault(); //disable cut,copy,paste
+                alert('cut,copy & paste options are disabled !!');
+            });
+        });
        
         
         // var interval = 30000;
@@ -100,7 +116,7 @@
            <div class="col-lg-8 col-12 col-md-7 " id="two" >
                 <div class="row" id="ques" >
                     <div class="col-lg-12">
-                        <p id="question"> <%= quest[cnt].toObject().question %>
+                        <p id="question" runat="server" onCopy="return false" onPaste="return false" onDrop="return false"> <%= quest[cnt].toObject().question %>
                         </p>
                     </div>
                 </div>
