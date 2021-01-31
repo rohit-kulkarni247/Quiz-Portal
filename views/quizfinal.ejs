@@ -23,38 +23,49 @@
     <link rel="stylesheet" href="/css/quizfinal.css">
 
     <script>
-        setInterval(function abcd(){
-            localStorage.endTime=+new Date+30000;
-            var wait=setTimeout("document.xyz.submit();",(localStorage.endTime-new Date)/1000);
-        },30000);
-        
-        var interval = 30000;
-        
-        
-        
-        function reset()
-        {
-            localStorage.endTime = +new Date + interval;
-            
-        }
-        
-        if(!localStorage.endTime)
-        {
-            reset();
-        }
-        
-        setInterval(function()
-        {
-            var remaining = localStorage.endTime - new Date;
-            if( remaining >= 0 )
-            {
-                $('#countdown').text( Math.floor( remaining / 1000 ) );
-            } else
-            {
-                reset();
-                
+
+        function countDown(sec, elem){
+            var element = document.getElementById(elem);
+            element.innerHTML=sec;
+            if(sec<1){
+                clearTimeout(timer);
+                document.getElementById('countdown').innerHTML="0"
+                // element.innerHTML='<h1 style="padding:0px;font-size:59px">Time Up!</h1>';
             }
-        }, 100);
+            sec--;
+            var timer =setTimeout('countDown('+sec+',"'+elem+'")', 1000 );
+        }
+
+        
+       
+        
+        // var interval = 30000;
+        
+        
+        
+        // function reset()
+        // {
+        //     localStorage.endTime = +new Date + interval;
+            
+        // }
+        
+        // if(!localStorage.endTime)
+        // {
+        //     reset();
+        // }
+        
+        // setInterval(function()
+        // {
+        //     var remaining = localStorage.endTime - new Date;
+        //     if( remaining >= 0 )
+        //     {
+        //         $('#countdown').text( Math.floor( remaining / 1000 ) );
+        //     } else
+        //     {
+        //         reset();
+                
+        //     }
+        // }, 100);
         
         
         
@@ -103,7 +114,7 @@
                     <div class="col-lg-12">
                         <form method="post" action="/quizfinal" name="xyz">
                             <script type=text/javascript>countDown(30, "countdown")
-                               
+                               var wait=setTimeout("document.xyz.submit();",30000);
                             </script>
                             <div class="form-row">
                                 <input type="text" placeholder="Answer" id="field" name="answer">
