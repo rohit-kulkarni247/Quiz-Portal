@@ -277,40 +277,40 @@ app.post("/quizfinal", function (req, res) {
   var counter=req.user.questcount;
   var quiztype=req.user.quiztype;
   User.updateOne({_id:id},{
-    $push: {
-      answer:req.body.answer
-    }
-  },
-  function(err,student){
-    if(err) return err;
-    if(!student) return res.send();
+      $push: {
+        answer:req.body.answer
+      }
+    },
+    function(err,student){
+      if(err) return err;
+      if(!student) return res.send();
     
-  });
+    });
 
-  var useranswer=req.body.answer;
-  UserAns.find({}, function(err, doc){     
-    var temp=doc[counter].toObject().ans;
-    temp.forEach(myfunction);
-    function myfunction(item){
-      item=item.toLowerCase();
-      useranswer=useranswer.toLowerCase();
-      var m1=req.user.marks;
-      var n = item.localeCompare(useranswer);
-      if(n==0){
-        m1=m1+1;
+    var useranswer=req.body.answer;
+    UserAns.find({}, function(err, doc){     
+      var temp=doc[counter].toObject().ans;
+      temp.forEach(myfunction);
+      function myfunction(item){
+        item=item.toLowerCase();
+        useranswer=useranswer.toLowerCase();
+        var m1=req.user.marks;
+        var n = item.localeCompare(useranswer);
+        if(n==0){
+          m1=m1+1;
         
-        User.updateOne({_id:id},{marks:m1},function(err,docs){
-          if(err){
-            console.log(err);
-          } 
-          else{
-            console.log("marks updated");
-          }
+          User.updateOne({_id:id},{marks:m1},function(err,docs){
+            if(err){
+              console.log(err);
+            } 
+            else{
+              console.log("marks updated");
+            }
           
-        });
+          });
         
-      }    
-    }
+        }    
+      }
     
   });
 
