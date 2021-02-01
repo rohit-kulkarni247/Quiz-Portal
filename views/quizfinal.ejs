@@ -133,18 +133,19 @@
                 <div class="row no-gutters">
                     <div class="col-lg-12">
                         <form method="post" action="/quizfinal" name="xyz">
-                            <script type=text/javascript>countDown(30, "countdown")
-                               var wait=setTimeout("document.xyz.submit();",30000);
+                            <script type=text/javascript>countDown(<%= Math.floor( timer / 1000 ) %>, "countdown")
+                               var wait=setTimeout("document.xyz.submit();",<%= timer %>);
                             </script>
                             <div class="form-row">
                                 <input type="text" placeholder="Answer" id="field" name="answer">
                                 <button id="btn" type="submit">Submit</button>
-                                <script>
+                                <!-- <script>
                                     function submitPoll(){
                                         document.getElementById("btn").disabled = true;
+                                        // var butimer=<%% butimer %>;
                                         setTimeout(function(){document.getElementById("btn").disabled = false;},5000);
                                     }
-                                    submitPoll();
+                                    submitPoll(); -->
                                 </script>
                             </div>     
                         </form>

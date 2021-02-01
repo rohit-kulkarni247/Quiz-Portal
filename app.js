@@ -44,6 +44,8 @@ const loginschema=new mongoose.Schema({
   mobile:String,
   marks:{type:Number,default:0},
   quiztype:String,
+  enterTime:{type:Number,default:0},
+  disbut:{type:Number,default:5000},
   versionKey: false
 });
 
@@ -153,16 +155,37 @@ app.get("/instruction", function (req, res) {
 app.get("/quizfinal", function (req, res) {
   if(req.isAuthenticated()){
     let type=req.user.quiztype;
-    console.log(type);
+    var timestart=req.user.enterTime;
+    var id=req.user.id;
     let counter=req.user.questcount;
     if(type=='mela'){
 
       if(counter<20){
         console.log(Date.now());
-        Quest.find({}, function(err, doc){     
-          res.render("quizfinal",{quest:doc,cnt:counter});
+        
+        if(timestart==0){
+          User.updateOne({_id:id},{enterTime:Date.now()+30000},function(err,docs){
+            if(err){
+              console.log(err);
+            } 
+            else{
+              console.log("time set");
+            }
           
-        });
+          });
+          Quest.find({}, function(err, doc){     
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000,butimer:req.user.disbut});
+            
+          });
+        }
+        else{
+          var elem=+req.user.enterTime-Date.now();
+          Quest.find({}, function(err, doc){     
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem,butimer:0});
+            
+          });
+        }
+        
       }
       else{
         res.redirect("/complete");
@@ -274,6 +297,7 @@ app.post('/index', function(req, res, next){
 
 app.post("/quizfinal", function (req, res) {
   var id=req.user.id;
+  
   var counter=req.user.questcount;
   var quiztype=req.user.quiztype;
   User.updateOne({_id:id},{
@@ -323,6 +347,15 @@ app.post("/quizfinal", function (req, res) {
       console.log("questcount updated");
     }
     
+  });
+  User.updateOne({_id:id},{enterTime:0},function(err,docs){
+    if(err){
+      console.log(err);
+    } 
+    else{
+      console.log("time set");
+    }
+  
   });
 
   // console.log(marks);
