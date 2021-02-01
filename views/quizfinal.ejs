@@ -37,9 +37,7 @@
             var timer =setTimeout('countDown('+sec+',"'+elem+'")', 1000 );
         }
 
-        $('#question').bind("cut copy paste",function(e) {
-            e.preventDefault();
-        });
+       
 
         $(document).ready(function() {
             $('#question').bind('copy paste cut',function(e) { 
@@ -59,6 +57,7 @@
             window.location="/logout";
         });
        
+        
         
         // var interval = 30000;
         
@@ -94,7 +93,7 @@
         </script>
 </head>
 <body>
-
+    
     <nav class="navbar navbar-expand-lg navbar-dark  fixed-top" style="background-color: black; font-family:'Times New Roman', Times, serif;opacity: 1;height: 7vh;">
         <a class="navbar-brand" href="#">
           <img src="images/quiz (1).png" id="brand" id="img_pisb" class="d-inline-block align-top" alt="">
