@@ -287,6 +287,19 @@ app.post("/quizfinal", function (req, res) {
 
 // logout
 app.get("/logout", function(req, res){
+  var id=req.user.id;
+  counter=20;
+
+  User.updateOne({_id:id},{questcount:counter},function(err,docs){
+    if(err){
+      console.log(err);
+    } 
+    else{
+      console.log("logged out");
+    }
+    
+  });
+
   req.logout();
   res.redirect("/index");
 });
