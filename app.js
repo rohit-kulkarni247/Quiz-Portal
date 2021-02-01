@@ -43,6 +43,7 @@ const loginschema=new mongoose.Schema({
   questcount: {type:Number,default:0},
   mobile:String,
   marks:{type:Number,default:0},
+  quiztype:String,
   versionKey: false
 });
 
@@ -151,19 +152,50 @@ app.get("/instruction", function (req, res) {
 
 app.get("/quizfinal", function (req, res) {
   if(req.isAuthenticated()){
+    let type=req.user.quiztype;
+    console.log(type);
     let counter=req.user.questcount;
-    if(counter<20){
-      console.log(Date.now());
-      Quest.find({}, function(err, doc){     
-        res.render("quizfinal",{quest:doc,cnt:counter});
-        
-      });
+    if(type=='mela'){
+
+      if(counter<20){
+        console.log(Date.now());
+        Quest.find({}, function(err, doc){     
+          res.render("quizfinal",{quest:doc,cnt:counter});
+          
+        });
+      }
+      else{
+        res.redirect("/complete");
+      }
     }
-    else{
-      res.redirect("/complete");
+    if(type=='biztech'){
+
+      if(counter<20){
+        console.log(Date.now());
+        QuestBiz.find({}, function(err, doc){     
+          res.render("quizfinal",{quest:doc,cnt:counter});
+          
+        });
+      }
+      else{
+        res.redirect("/complete");
+      }
+    }
+    if(type=='general'){
+
+      if(counter<20){
+        console.log(Date.now());
+        QuestGen.find({}, function(err, doc){     
+          res.render("quizfinal",{quest:doc,cnt:counter});
+          
+        });
+      }
+      else{
+        res.redirect("/complete");
+      }
     }
   }
-  else{
+    else{
     res.redirect("/index");
   }
 });
@@ -187,11 +219,13 @@ app.get("/data",function (req, res) {
 
 //post routes
 app.post("/singup", function(req, res){
-  const { username, password, mobile } = req.body;
+  console.log(req.body);
+  const { username, password, mobile, cars } = req.body;
   const newUser = new User({
     username,
     password, 
-    mobile
+    mobile,
+    quiztype:cars
   });
 
   newUser.save()
@@ -241,6 +275,7 @@ app.post('/index', function(req, res, next){
 app.post("/quizfinal", function (req, res) {
   var id=req.user.id;
   var counter=req.user.questcount;
+  var quiztype=req.user.quiztype;
   User.updateOne({_id:id},{
     $push: {
       answer:req.body.answer
