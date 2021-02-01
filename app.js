@@ -52,10 +52,22 @@ loginschema.plugin(passportLocalMongoose);
 const User = new mongoose.model("User", loginschema);
 
 const Schema = mongoose.Schema; 
-const Quest = mongoose.model("Question", new Schema({}), "MELA");
+const Quest = mongoose.model("Question", new Schema({}), "MELA"); //mela questions
 
 const AnsSchema=mongoose.Schema;
-const UserAns=mongoose.model("Ans",new AnsSchema({}),"MELA_ANSWERS");
+const UserAns=mongoose.model("Ans",new AnsSchema({}),"MELA_ANSWERS"); //mela answers
+
+const SchemaBiz = mongoose.Schema; 
+const QuestBiz = mongoose.model("QuestBiz", new SchemaBiz({}), "BIZTECH"); //biztech questions
+
+const AnsBiz=mongoose.Schema;
+const UserBiz=mongoose.model("AnsBiz",new AnsBiz({}),"BIZ_ANSWERS"); //biztech answers
+
+const SchemaGen = mongoose.Schema; 
+const QuestGen = mongoose.model("QuestGen", new SchemaGen({}), "GENERAL"); //general questions
+
+const AnsGen=mongoose.Schema;
+const UserGen=mongoose.model("AnsGen",new AnsGen({}),"GEN_ANSWERS"); //general answers
 
 // UserAns.find({},function(err, doc){
 //   console.log(typeof(doc[0].toObject().ans[0]));
@@ -141,7 +153,7 @@ app.get("/quizfinal", function (req, res) {
   if(req.isAuthenticated()){
     let counter=req.user.questcount;
     if(counter<20){
-
+      console.log(Date.now());
       Quest.find({}, function(err, doc){     
         res.render("quizfinal",{quest:doc,cnt:counter});
         
