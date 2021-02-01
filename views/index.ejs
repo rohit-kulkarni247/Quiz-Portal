@@ -30,11 +30,7 @@
           <img class="il justify-content-right align-items-right" src="images/ieeelogo.png">
         </div>
       </nav>
-      <% if(failed!=''){%>
-        <div class="alert alert-danger">
-          <strong>Failed!!</strong><%=failed%>
-        </div>
-      <% } %>
+     
 
         <div class="container-fluid">
           <div class="fullscreen-bg">
@@ -49,6 +45,11 @@
             </form>
             <form id="login" method="post" action="/index" class="col-10 col-md-6 input-area justify-content-center align-items-center">
               <img class="cre1" style="background-color: white;" src="images/quiz.png">
+              <% if(failed!=''){%>
+                <div class="alert">
+                  &#9888 <%= failed%>
+                </div>
+              <% } %>
                 <!--<label><i class="fa fa-user ico" aria-hidden="true"></i> Email :<br><input type="email" class="input-field" required></label><br>-->
 				        <label><i class="fa fa-user ico" aria-hidden="true"></i> Username :<br><input type="username" name="username" class="input-field" required></label><br>
                 <label><i class="fa fa-lock ico" aria-hidden="true"></i> Password :<input type="password" name="password" class="input-field" required></label><br>

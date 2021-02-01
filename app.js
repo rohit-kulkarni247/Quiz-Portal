@@ -163,6 +163,7 @@ app.get("/complete", function (req, res) {
   else{
     res.redirect("/index");
   }
+  // res.render("complete");
 });
 
 app.get("/data",function (req, res) {
