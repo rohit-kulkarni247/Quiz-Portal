@@ -178,14 +178,15 @@ app.get("/quizfinal", function (req, res) {
           });
           // var elem=+req.user.enterTime-Date.now(;
           Quest.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000});
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000,butime:5000});
             
           });
         }
         else{
           var elem=+req.user.enterTime-Date.now();
+
           Quest.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem});
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem,butime:5000});
             
           });
         }

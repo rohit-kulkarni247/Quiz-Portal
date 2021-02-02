@@ -24,6 +24,13 @@ $(document).ready(function() {
     });
 });
 
+// function submitPoll(){
+//     document.getElementById("btn").disabled = true;
+//     // var butimer=<%% butimer %>;
+//     setTimeout(function(){document.getElementById("btn").disabled = false;},5000);
+// }
+// submitPoll();
+
 // $(window).blur(function() {
 //     window.location="/logout";
 // });
