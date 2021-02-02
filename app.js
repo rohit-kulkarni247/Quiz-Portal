@@ -134,10 +134,12 @@ app.get("/index", function (req, res) {
 });
 
 app.get("/our_team", function (req, res) {
+  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   res.render("our_team");
 });
 
 app.get("/web_team",function (req, res) {
+  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   res.render("wt_q");
 })
 
@@ -154,6 +156,7 @@ app.get("/instruction", function (req, res) {
 
 app.get("/quizfinal", function (req, res) {
   if(req.isAuthenticated()){
+    res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
     let type=req.user.quiztype;
     var timestart=req.user.enterTime;
     var id=req.user.id;
