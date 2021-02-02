@@ -161,7 +161,7 @@ app.get("/quizfinal", function (req, res) {
     if(type=='mela'){
 
       if(counter<20){
-        console.log(Date.now());
+        // console.log(Date.now());
         
         if(timestart==0){
           User.updateOne({_id:id},{enterTime:Date.now()+30000},function(err,docs){
@@ -173,15 +173,16 @@ app.get("/quizfinal", function (req, res) {
             }
           
           });
+          // var elem=+req.user.enterTime-Date.now(;
           Quest.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000,butimer:req.user.disbut});
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000});
             
           });
         }
         else{
           var elem=+req.user.enterTime-Date.now();
           Quest.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem,butimer:0});
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem});
             
           });
         }
