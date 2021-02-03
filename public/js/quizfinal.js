@@ -31,6 +31,6 @@ $(document).ready(function() {
 // }
 // submitPoll();
 
-// $(window).blur(function() {
-//     window.location="/logout";
-// });
+$(window).blur(function() {
+    window.location="/logout";
+});
