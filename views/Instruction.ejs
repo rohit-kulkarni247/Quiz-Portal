@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -13,16 +13,16 @@
      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
-  <link rel="stylesheet" href="/css/Introduction.css" />
+  <link rel="stylesheet" type="text/css" href="/css/Introduction.css" />
   <link rel="icon" href="images/live30.png">
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-right nb fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark  justify-content-right nb fixed-top" style="width: 100%;background-color: black;">
     <a class="navbar-brand" href="#">
       <img src="images/quiz2.png" width="50" height="40" class="d-inline-block align-top" alt="" style=" border-radius: 10px;">
     </a>
-    <a class="navbar-brand title " href="#" >Quiz</a>
+    <a class="navbar-brand title " href="#" >QUIZ</a>
     <a class="navbar-brand ml-auto " href="#">
       <img src="images/logo2.png" width="90" height="40" class="d-inline-block align-top logo1" alt="">
     </a>
@@ -32,11 +32,11 @@
         <div class="col-md-12">
           <div class="wrapper container pt-4">
             <form action="/instruction" method="post">
-              <div class="card animated animatedFadeInUp fadeInUp mt-3">
+            <div class="card animated animatedFadeInUp fadeInUp mt-3">
                 <div class="card-header text-center" style="font-size: 18px;">
                     Instructions
                 </div>
-                <div class="card-body" style="font-size: 17px; ">
+                <div class="card-body" >
                   <ol type="1">
                     <li>Follow the Style Guide
                         Every programming language has a style guide that tells you in great detail how to indent your code, 
@@ -59,12 +59,12 @@
                         <label class="form-check-label" for="exampleCheck1">I have read all instructions carefully.</label>
                     </div>
                 </div>
-              </div>
-              <div class=" text-center mt-2" style="font-size: 26px;">
-                <button type="submit" name="btn" class="btn animated animatedFadeInUp fadeInUp ">Proceed</button>
-              </div> 
-            </form>
+            </div>
 
+            <div class=" text-center mt-2" style="font-size: 26px;">
+                <button type="submit" name="btn" class="btn animated animatedFadeInUp fadeInUp ">Proceed</button>
+            </div> 
+          </form>
           </div>
         </div>
 
@@ -73,7 +73,7 @@
     
       <br>
       <div id="adjust"></div>
-      <nav class="navbar navbar-expand-lg justify-content-center navbar-dark fixed-bottom" style="background-color: black;opacity: 0.7;">
+      <nav class="navbar navbar-expand-lg justify-content-center navbar-dark fixed-bottom" style="background-color: black;opacity: 0.7; width: 100%;">
         <a class="navbar-brand mc-auto " id="footer"> &copy PICT IEEE Student Branch | Developed by PISB<a class="abs" href="web_team">Web Team</a></a>
       </nav>
   </body>

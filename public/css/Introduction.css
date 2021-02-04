@@ -1,128 +1,321 @@
 html {
-    height: 100%;
-  
-  }
-  body
-  {
-  background: linear-gradient(0deg,#103d3d, #27aca5, #b7dddc);
+  height: 100%;
+}
+body {
+  font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  background-image: url("/images/puz.png");
+  background-repeat: repeat;
+  /* background-color: rgb(155, 219, 211); */
   width: 100%;
-  
   background-position: center;
   background-size: cover;
-  /* overflow: hidden; */
-  /* font-family: 'IM Fell DW Pica', serif; */
-  /* font-family: 'BenchNine', sans-serif; */
-  font-family: 'Gruppo', cursive;
-  /* letter-spacing: 1px; */
-  position: relative;                
-  overflow: hidden;
-    
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-   
-  
-    
-  }
-  
-  /*card*/
-  .card
-  {
-    background: rgb(9,40,49);
-    color: #fff;
-    border-radius: 20px;
-    box-shadow: 10px 10px 5px rgb(20, 19, 19);
-  }
-  .card-header
-  {
-  border-bottom: 2px solid white;
-  }
-  
-  .card-footer
-  {
-  border-top: 2px solid white;
-  }
-  /*button*/
-  .btn
-  {
-    color:#0099cc;
-    background-color: #001122;
-    font-size:15px;
-    letter-spacing: 1px;
-    padding: 5px 20px;
-    border: 2px solid #0099cc;
-    
-  }
-  
-  .btn:hover {
-  color:white;
-  background-color: #0099cc;
-    font-size:15px;
-    letter-spacing: 1px;
-    padding: 5px 20px;
-    border: 2px solid #0099cc;
-    
-  
-  }
-  
-  .title{
-  font-size:22px !important;
+  font-family: "Gruppo", cursive;
   position: relative;
-  left : 43vw;
-  font-family:Roboto;
+  min-height: 100%;
+  overflow: hidden;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*card*/
+.card {
+  background-color: #608cdd;
+  opacity: 0.8;
+
+  color: #fff;
+  border-radius: 0px;
+  box-shadow: 10px 10px 5px rgb(20, 19, 19);
+}
+.card-header {
+  border-bottom: 2px solid white;
+}
+
+.card-footer {
+  border-top: 2px solid white;
+}
+/*button*/
+.btn {
+  color: #608cdd;
+  background-color: black;
+  font-size: 15px;
+  letter-spacing: 1px;
+  padding: 5px 20px;
+  border: 2px solid #608cdd;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #608cdd;
+  font-size: 15px;
+  letter-spacing: 1px;
+  padding: 5px 20px;
+  border: 2px solid #608cdd;
+}
+
+.title {
+  font-size: 22px !important;
+  position: relative;
+  left: 43vw;
+  font-family: Roboto;
+}
+
+/* Bottom adjust*/
+@media only screen and (max-width: 1921px) {
+  .card-body {
+    font-size: 20px;
+    height: 50vh;
+    overflow-y: scroll;
   }
-  
-  /* Bottom adjust*/
-  @media only screen and (max-width: 1256px) {#adjust{padding: 3% !important;}.title{left: 42vw;}}
-  @media only screen and (max-width: 768px) {#adjust{padding: 8% !important;}}
-  @media only screen and (max-width: 500px) {#adjust{padding: 12% !important;}#footer{font-size: 8px;}}
-  
-  
-  /* Animation of cards*/
-  
-  @keyframes fadeInUp {
+}
+@media only screen and (max-width: 1402px) {
+  .title {
+    left: 40vw;
+  }
+}
+@media only screen and (max-width: 1370px) {
+  .card-body {
+    font-size: 20px;
+    height: 46vh;
+  }
+  .title {
+    left: 42vw;
+  }
+}
+@media only screen and (max-width: 1282px) {
+  #adjust {
+    padding: 3% !important;
+  }
+  .title {
+    left: 41vw !important;
+  }
+  .card-body {
+    font-size: 17px;
+  }
+}
+@media only screen and (max-width: 1154px) {
+  .title {
+    left: 40vw !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #adjust {
+    padding: 8% !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #adjust {
+    padding: 13% !important;
+  }
+  #footer {
+    font-size: 8px;
+  }
+}
+
+/*Scrollbar*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+::-moz-scrollbar {
+  width: 10px;
+}
+::-moz-scrollbar-track {
+  box-shadow: inset 0 0 2px grey;
+  border-radius: 10px;
+}
+::-moz-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+::-moz-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Animation of cards*/
+
+@keyframes fadeInUp {
   from {
-      transform: translate3d(0,40px,0)
+    transform: translate3d(0, 40px, 0);
   }
-  
+
   to {
-      transform: translate3d(0,0,0);
-      opacity: 1
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
-  }
-  
-  @-webkit-keyframes fadeInUp {
+}
+
+@-webkit-keyframes fadeInUp {
   from {
-      transform: translate3d(0,40px,0)
+    transform: translate3d(0, 40px, 0);
   }
-  
+
   to {
-      transform: translate3d(0,0,0);
-      opacity: 1
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
-  }
-  
-  .animated {
+}
+
+.animated {
   animation-duration: 1s;
   animation-fill-mode: both;
   -webkit-animation-duration: 1s;
-  -webkit-animation-fill-mode: both
-  }
-  
-  .animatedFadeInUp {
-  opacity: 0
-  }
-  
-  .fadeInUp {
+  -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+  opacity: 0;
+}
+
+.fadeInUp {
   opacity: 0;
   animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
+}
+
+/*For responsive*/
+@media only screen and (max-width: 1023px) {
+  .row {
+    height: auto !important  ;
   }
-  
-  /*For responsive*/
-  @media only screen and (max-width: 1023px) {.row{height: auto !important  ;}html{height: auto !important  ;} body{height: auto !important  ; overflow: auto !important;}.card{margin-top: 3vh !important;}}
-  @media only screen and (max-height: 1367px) and (min-height: 1365px)  {body{height: 97vh !important  ;}.card{margin-top: 18vh !important;}}
-  @media screen and (max-width: 1200px) and (min-width: 1023px) {.card-body{font-size: 14px !important;}.title{left: 41vw;}}
-  @media screen and (max-width: 1023px) and (min-width: 1000px) {.card-body{font-size: 16px !important;}.title{left: 40vw;}}
-  @media only screen and (max-width: 992px) {.logo1{display: none !important;}.title{margin-left: auto ;}}
-  @media (max-width:700px){.title{ font-size: 20px !important; padding-right: 40px !important;}}
-  @media (max-width:425px){.title{ font-size: 20px !important; padding-right: 40px !important;}}
-  @media (max-width:300px){.title{ font-size: 20px !important; margin-right: 40px !important;}}
+  html {
+    height: auto !important  ;
+  }
+  body {
+    height: auto !important  ;
+  }
+  .card {
+    margin-top: 3vh !important;
+  }
+}
+@media only screen and (max-height: 1367px) and (min-height: 1365px) {
+  body {
+    height: 97vh !important  ;
+  }
+  .card {
+    margin-top: 18vh !important;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 1023px) {
+  .card-body {
+    font-size: 18px !important;
+  }
+  .title {
+    left: 41vw;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 1000px) {
+  .card-body {
+    font-size: 16px !important;
+  }
+  .title {
+    left: 40vw;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .logo1 {
+    display: none !important;
+  }
+  .title {
+    margin-left: auto;
+  }
+  .card-header {
+    font-size: 18px !important;
+  }
+  .card-body {
+    font-size: 16px !important;
+  }
+  .from-check {
+    font-size: 10px !important;
+  }
+}
+@media (min-width: 762px) and (max-width: 772px) {
+  body {
+    height: 100vh !important;
+  }
+}
+@media (max-width: 700px) {
+  .title {
+    font-size: 20px !important;
+    padding-right: 40px !important;
+  }
+}
+@media (min-width: 537px) and (max-width: 543px) {
+  body {
+    height: 100vh !important;
+  }
+}
+@media (max-width: 425px) {
+  .title {
+    font-size: 20px !important;
+    padding-right: 40px !important;
+  }
+  .abs {
+    font-size: 11px !important;
+  }
+}
+@media (min-width: 408px) and (max-width: 412px) {
+  .navbar {
+    width: 100vw !important;
+  }
+  body {
+    height: 100vh !important;
+  }
+}
+@media (max-width: 376px) {
+  .title {
+    font-size: 20px !important;
+    margin-right: 40px !important;
+  }
+  body {
+    height: 100vh !important;
+  }
+  .abs {
+    font-size: 11px !important;
+  }
+}
+@media (min-width: 348px) and (max-width: 370px) {
+  .navbar {
+    width: 100vw !important;
+  }
+}
+@media (max-width: 322px) {
+  .title {
+    font-size: 20px !important;
+    margin-right: 40px !important;
+  }
+  #footer {
+    font-size: 5px !important;
+  }
+  .abs {
+    font-size: 8px !important;
+  }
+  .card {
+    margin-top: -0.5vh !important;
+  }
+  .card-header {
+    font-size: 16px !important;
+  }
+}
+@media (max-width: 300px) {
+  .title {
+    font-size: 20px !important;
+    margin-right: 40px !important;
+  }
+  #footer {
+    font-size: 8px !important;
+  }
+  .abs {
+    font-size: 8px !important;
+  }
+}
