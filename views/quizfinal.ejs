@@ -23,74 +23,8 @@
     <link rel="stylesheet" href="/css/quizfinal.css">
     <link rel="icon" href="images/live30.png">
 
-    <script>
-
-        function countDown(sec, elem){
-            var element = document.getElementById(elem);
-            element.innerHTML=sec;
-            if(sec<1){
-                clearTimeout(timer);
-                document.getElementById('countdown').innerHTML="0"
-                // element.innerHTML='<h1 style="padding:0px;font-size:59px">Time Up!</h1>';
-            }
-            sec--;
-            var timer =setTimeout('countDown('+sec+',"'+elem+'")', 1000 );
-        }
-
-       
-
-        $(document).ready(function() {
-            $('#question').bind('copy paste cut',function(e) { 
-                e.preventDefault(); //disable cut,copy,paste
-                
-            });
-        });
-
-        $(document).ready(function() {
-            $('#field').bind('copy paste cut',function(e) { 
-                e.preventDefault(); //disable cut,copy,paste
-                
-            });
-        });
-
-        // $(window).blur(function() {
-        //     window.location="/logout";
-        // });
-       
-        
-        
-        // var interval = 30000;
-        
-        
-        
-        // function reset()
-        // {
-        //     localStorage.endTime = +new Date + interval;
-            
-        // }
-        
-        // if(!localStorage.endTime)
-        // {
-        //     reset();
-        // }
-        
-        // setInterval(function()
-        // {
-        //     var remaining = localStorage.endTime - new Date;
-        //     if( remaining >= 0 )
-        //     {
-        //         $('#countdown').text( Math.floor( remaining / 1000 ) );
-        //     } else
-        //     {
-        //         reset();
-                
-        //     }
-        // }, 100);
-        
-        
-        
-        
-        </script>
+    <script src="/js/quizfinal.js"></script>
+    
 </head>
 <body>
     
@@ -133,19 +67,20 @@
                 <div class="row no-gutters">
                     <div class="col-lg-12">
                         <form method="post" action="/quizfinal" name="xyz">
-                            <script type=text/javascript>countDown(30, "countdown")
-                               var wait=setTimeout("document.xyz.submit();",30000);
+                            <script type=text/javascript>countDown(<%= Math.floor( timer / 1000 ) %>, "countdown")
+                               var wait=setTimeout("document.xyz.submit();",<%= timer %>);
                             </script>
                             <div class="form-row">
                                 <input type="text" placeholder="Answer" id="field" name="answer">
-                                <button id="btn" type="submit">Submit</button>
-                                <script>
+                                <button id="btn" type="submit" >Submit</button>
+                                <!-- <script>
                                     function submitPoll(){
                                         document.getElementById("btn").disabled = true;
+                                        // var butimer=<%% butimer %>;
                                         setTimeout(function(){document.getElementById("btn").disabled = false;},5000);
                                     }
                                     submitPoll();
-                                </script>
+                                </script> -->
                             </div>     
                         </form>
                     </div>
@@ -159,5 +94,6 @@
     <a class="navbar-brand mc-auto " id="footer">&copy PICT IEEE Student Branch | Developed by PISB<a class="abs" href="web_team">Web Team</a></a>
     </nav>
 
+    
 </body>
 </html>

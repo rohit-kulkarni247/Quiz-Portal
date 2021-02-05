@@ -13,70 +13,53 @@
         <link rel="stylesheet" type="text/css" href="/css/index.css">
         <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-        <link rel="icon" href="images/live30.png">
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-right nb">
-        <img class="logo justify-content-right align-items-right" src="images/logo2.png">
+      
+        <nav class="navbar navbar-expand-lg navbar-dark  justify-content-right nb" style="z-index: 10000; background-color: black;">
+            <img class="logo justify-content-right align-items-right" src="images/logo2.png">
+            <a class="navbar-brand title " href="#" >QUIZ</a>
+            <button class="navbar-toggler navbar-dark justify-content-end " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon navbar-dark"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" >
+              <div class="navbar-nav justify-content-end align-items-right">
+                <!-- <a class="nav-link active nbc" href="Instruction">Instructions</a> -->
+                <a class="nav-link active nbc" href="our_team">Our Team</a>
+              </div>
+              <img class="il justify-content-right align-items-right" src="images/ieeelogo.png">
+            </div>
+          </nav>
+
+      <div id="home_wave" >
+    </div>
+      
+    <div class="container-fluid" >
         
-        <button class="navbar-toggler navbar-dark justify-content-end " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon navbar-dark"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-          <div class="navbar-nav justify-content-end align-items-right">
-            
-            <a class="nav-link active nbc" href="our_team">Our Team</a>
-          </div>
-          <img class="il justify-content-right align-items-right" src="images/ieeelogo.png">
-        </div>
-      </nav>
-     
-
-        <div class="container-fluid">
-          <div class="fullscreen-bg">
-            <video loop muted autoplay class="fullscreen-bg__video">
-                <source src="images/Abstract-Technology-Background-2.mp4" type="video/mp4">
-            </video>
-        </div>
-        
-            <form class="col-10 col-md-6">
-            <label class="txt"><img class="cred" src="images/crewhite.png">CREDENZ LIVE<p class="stxt">presents</p></label>
-            <p class="en" style="padding-left: 8vw;">QUIZ</p>
-            </form>
-            <form id="login" method="post" action="/index" class="col-10 col-md-6 input-area justify-content-center align-items-center">
-              <img class="cre1" style="background-color: white;" src="images/quiz.png">
-              <% if(failed!=''){%>
-                <div class="alert">
-                  &#9888 <%= failed%>
-                </div>
-              <% } %>
-                <!--<label><i class="fa fa-user ico" aria-hidden="true"></i> Email :<br><input type="email" class="input-field" required></label><br>-->
-				        <label><i class="fa fa-user ico" aria-hidden="true"></i> Username :<br><input type="username" name="username" class="input-field" required></label><br>
-                <label><i class="fa fa-lock ico" aria-hidden="true"></i> Password :<input type="password" name="password" class="input-field" required></label><br>
-                <label><i class="fa fa-mobile ico" aria-hidden="true"></i> Mobile :<input type="text" name="mobile" pattern="[0-9]+" class="input-field" required></label><br>
-        <button type="submit" class="submit-btn bg-info" href="index">Log In</button> 
-        <p class="sign">Not Signed Up ? <a class="su" href="https://www.credenz.in/"> Click Here</a> </p>
-            </form>
-        </div>
-        <div class="pad" style="padding:1%;"></div>
-        <nav class="navbar navbar-expand-lg justify-content-center navbar-dark bg-dark fixed-bottom nb ">
-            <div class="navbar-brand mc-auto nt">&copy PICT IEEE Student Branch | Developed by PISB <a class="abs" href="web_team">Web Team</a></div>
-      </nav>
-        
-        <script>
-          var paths = document.querySelectorAll('.st0');
-
-            [].forEach.call(paths, function(path) {
-              var length = path.getTotalLength();
-              path.style.transition = path.style.WebkitTransition = 'none';
-              path.style.strokeDasharray = length + ' ' + length;
-              path.style.strokeDashoffset = length;
-              path.getBoundingClientRect();
-              path.style.transition = path.style.WebkitTransition = 'stroke-dashoffset 10s ease-in-out';
-
-              path.style.strokeDashoffset = '0';
-            })
-
-        </script>
-    </body>
+        <form class="col-10 col-md-6 new">
+        <img class="cred " src="images/C'live Horizontal Colour .png"><p class="stxt">presents</p>
+        <p class="en" >QUIZ</p>
+        </form>
+        <form id="login" method="post" action="/index" class="col-10 col-md-6 input-area justify-content-center align-items-center">
+          <img class="cre1" style="background-color: white;" src="images/quiz.png">
+          <% if(failed!=''){%>
+            <div class="alert">
+              &#9888 <%= failed%>
+            </div>
+          <% } %>
+            <!--<label><i class="fa fa-user ico" aria-hidden="true"></i> Email :<br><input type="email" class="input-field" required></label><br>-->
+            <label><i class="fa fa-user ico" aria-hidden="true"></i> Username :<br><input type="username" name="username" class="input-field" required></label><br>
+            <label><i class="fa fa-lock ico" aria-hidden="true"></i> Password :<input type="password" name="password" class="input-field" required></label><br>
+            <label><i class="fa fa-mobile ico" aria-hidden="true"></i> Mobile :<input type="text" name="mobile" pattern="[0-9]+" class="input-field" required></label><br>
+            <button type="submit" class="submit-btn bg-info" href="index">Log In</button> 
+            <p class="sign">Not Signed Up ? <a class="su" href="https://www.credenz.in/"> Click Here</a> </p>
+        </form>
+    </div>
+    <div class="pad" style="padding:1%;"></div>
+    <nav class="navbar navbar-expand-lg justify-content-center navbar-dark  fixed-bottom nb " style="background-color: black;">
+        <div class="navbar-brand mc-auto nt">&copy PICT IEEE Student Branch | Developed by PISB <a class="abs" href="web_team" style="color: #608cdd ;">Web Team</a></div>
+  </nav>
+  <script src="/js/all.js"></script>
+  <script src="/js/login.js"></script>
+    </body>   
 </html>
