@@ -248,20 +248,36 @@ app.get("/data",function (req, res) {
 
 //post routes
 app.post("/singup", function(req, res){
-  console.log(req.body);
+
   const { username, password, mobile, cars } = req.body;
-  const newUser = new User({
-    username,
-    password, 
-    mobile,
-    quiztype:cars
+  axios.post('https://backend.credenz.in/eventlogin',{
+    username:username,
+    event:"melaquiz",
+    password:password,
+    adminpass:"pass"
+  })
+  .then(function (response) {
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
   });
 
-  newUser.save()
-      .then(user => {console.log('You are now registered and can log in');
-          res.redirect('/index');
-      })
-      .catch(err => console.log(err));
+
+  // console.log(req.body);
+  // const { username, password, mobile, cars } = req.body;
+  // const newUser = new User({
+  //   username,
+  //   password, 
+  //   mobile,
+  //   quiztype:cars
+  // });
+
+  // newUser.save()
+  //     .then(user => {console.log('You are now registered and can log in');
+  //         res.redirect('/index');
+  //     })
+  //     .catch(err => console.log(err));
 
 
 });
@@ -278,6 +294,7 @@ app.post("/instruction", function (req, res){
 });
 
 app.post('/index', function(req, res, next){
+  console.log(req.body);
   passport.authenticate("local", 
     function(err, user, info) {
       if (err) { 
