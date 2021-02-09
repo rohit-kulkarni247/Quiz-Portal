@@ -82,13 +82,7 @@ const UserGen=mongoose.model("AnsGen",new AnsGen({}),"GEN_ANSWERS"); //general a
 
 passport.use(
   new LocalStrategy({ username: 'username',passReqToCallback: true }, (req,username,password, done) => {
-    // Match user
-
-    // https.get(process.env.CLIENT_URL,function(response){
-    //   response.on("data", function(data){
-    //     res.send(JSON.parse(data));
-    //   })
-    // });
+    
     User.findOne({username: username})
       .then(user => {
         if (!user) {
@@ -97,14 +91,7 @@ passport.use(
         }
         // console.log(req.body.phone);
         if(password==user.password){
-
-          if(user.mobile==req.body.mobile){
             return done(null, user);
-          }
-          else {
-            done(null, false, { message: 'Mobile number incorrect' });
-            throw new Error("mobile number incorrect");
-          }
         }
         else {
           done(null, false, { message: 'Password incorrect' });
@@ -162,7 +149,7 @@ app.get("/quizfinal", function (req, res) {
     var timestart=req.user.enterTime;
     var id=req.user.id;
     let counter=req.user.questcount;
-    if(type=='mela'){
+    if(type=='melaquiz'){
 
       if(counter<20){
         // console.log(Date.now());
@@ -197,7 +184,7 @@ app.get("/quizfinal", function (req, res) {
         res.redirect("/complete");
       }
     }
-    if(type=='biztech'){
+    if(type=='biztechquiz'){
 
       if(counter<20){
         console.log(Date.now());
@@ -210,7 +197,7 @@ app.get("/quizfinal", function (req, res) {
         res.redirect("/complete");
       }
     }
-    if(type=='general'){
+    if(type=='generalquiz'){
 
       if(counter<20){
         console.log(Date.now());
@@ -257,7 +244,7 @@ app.post("/singup", function(req, res){
     adminpass:"pass"
   })
   .then(function (response) {
-    console.log(response.data);
+    console.log(response);
   })
   .catch(function (error) {
     console.log(error);
@@ -294,13 +281,51 @@ app.post("/instruction", function (req, res){
 });
 
 app.post('/index', function(req, res, next){
+
   console.log(req.body);
+  const { username, password, quiztype } = req.body;
+  axios.post('https://backend.credenz.in/eventlogin',{
+    username:username,
+    event:quiztype,
+    password:password,
+    adminpass:"pass"
+  })
+  .then(function (response) {
+    console.log(response.data);
+
+    if(response.data.allow==true){
+
+      const newUser = new User({
+        username:response.data.user.username,
+        password:response.data.user.password, 
+        mobile:response.data.user.phoneno,
+        quiztype:req.body.quiztype
+      });
+      
+      newUser.save()
+        .then(user => {console.log('You are now registered and can log in');
+
+        
+      })
+      .catch(err => console.log(err));
+    }
+    else{
+      return res.render("index",{failed:"User not found"});
+    }
+
+
+  })
+  .catch(function (error) {
+    console.log(error);
+    return res.render("index",{failed:"Some error occurred"});
+  });
+
   passport.authenticate("local", 
     function(err, user, info) {
       if (err) { 
         console.log(err);
         // return next(err);
-       }
+      }
       if (!user) { 
         res.render("index",{failed:"Invalid details entered"}); 
       }
@@ -311,8 +336,12 @@ app.post('/index', function(req, res, next){
         }
         return res.redirect("/instruction");
       });
-    }
+     }
   )(req, res, next);
+
+  // res.redirect('/index');
+
+
 });
 
 

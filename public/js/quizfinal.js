@@ -36,3 +36,44 @@ $(window).blur(function() {
 });
 
 //backend.credenz.in/eventlogin
+
+// melaquiz:
+// {
+//   username: "poornima",
+//   event: "melaquiz",
+//   password: "0w$18tTt",
+//   adminpass: "pass"
+// }
+// generalquiz:
+// {
+//   username: "poornima",
+//   event: "generalquiz",
+//   password: "$R#c@YdO",
+//   adminpass: "pass"
+// }
+// biztechquiz:
+// {
+//   username: "poornima",
+//   event: "biztechquiz",
+//   password: "zKgkjz1w",
+//   adminpass: "pass"
+// }
+
+// Res Object :
+// if valid:
+// {
+//     allow : true,
+//     user : {
+//         username,
+//         name,
+//         password,
+//         email,
+//         phoneno,
+//         clgname
+//     }
+// }
+// else:
+// {
+//     allow: false,
+//     error : error_message
+// }
