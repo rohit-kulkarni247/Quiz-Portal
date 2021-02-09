@@ -34,3 +34,5 @@ $(document).ready(function() {
 $(window).blur(function() {
     window.location="/logout";
 });
+
+//backend.credenz.in/eventlogin
