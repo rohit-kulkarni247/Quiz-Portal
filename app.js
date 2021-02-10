@@ -20,12 +20,10 @@ app.set("view engine", "ejs");
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
-app.enable('trust proxy');
 app.use(session({
   secret: "My little secret of football tactics.",
-  resave: true,
-  saveUninitialized: true,
-  proxy: true
+  resave: false,
+  saveUninitialized: false,
 }));
 
 app.use(passport.initialize());
