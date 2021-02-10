@@ -43,6 +43,9 @@ const loginschema = new mongoose.Schema({
   answer: [String],
   questcount: { type: Number, default: 0 },
   mobile: String,
+  email:String,
+  name: String,
+  college:String,
   marks: { type: Number, default: 0 },
   quiztype: String,
   enterTime: { type: Number, default: 0 },
@@ -330,6 +333,9 @@ app.post('/', async function (req, res, next) {
                 const newUser = new User({
                   username: response.data.user.username,
                   password: response.data.user.password,
+                  email: response.data.user.email,
+                  name: response.data.user.name,
+                  college: response.data.user.clgname,
                   mobile: response.data.user.phoneno,
                   quiztype: req.body.quiztype
                 });
@@ -405,6 +411,9 @@ app.post('/', async function (req, res, next) {
                 const newUser = new User({
                   username: response.data.user.username,
                   password: response.data.user.password,
+                  email: response.data.user.email,
+                  name: response.data.user.name,
+                  college: response.data.user.clgname,
                   mobile: response.data.user.phoneno,
                   quiztype: req.body.quiztype
                 });
@@ -480,6 +489,9 @@ app.post('/', async function (req, res, next) {
                 const newUser = new User({
                   username: response.data.user.username,
                   password: response.data.user.password,
+                  email: response.data.user.email,
+                  name: response.data.user.name,
+                  college: response.data.user.clgname,
                   mobile: response.data.user.phoneno,
                   quiztype: req.body.quiztype
                 });
