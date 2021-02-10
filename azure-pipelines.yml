@@ -4,12 +4,12 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+- master
 
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '61ab8659-795e-4b62-a54e-5ce79888f23f'
+  azureSubscription: '024ed77d-5dad-455e-acf9-fdc93a1915f8'
   
   # Web app name
   webAppName: 'Quiz-Portal'
