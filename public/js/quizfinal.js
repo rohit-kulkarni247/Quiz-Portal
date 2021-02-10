@@ -59,21 +59,3 @@ $(window).blur(function() {
 //   adminpass: "pass"
 // }
 
-// Res Object :
-// if valid:
-// {
-//     allow : true,
-//     user : {
-//         username,
-//         name,
-//         password,
-//         email,
-//         phoneno,
-//         clgname
-//     }
-// }
-// else:
-// {
-//     allow: false,
-//     error : error_message
-// }
