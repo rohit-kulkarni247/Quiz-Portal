@@ -113,11 +113,11 @@ passport.deserializeUser(function(id, done) {
 });
 
 //get routes
-app.get("/",function (req, res) {
-  res.render("singup");
-});
+// app.get("/",function (req, res) {
+//   res.render("singup");
+// });
 
-app.get("/index", function (req, res) {
+app.get("/", function (req, res) {
   res.render("index",{failed:""});
 });
 
@@ -137,7 +137,7 @@ app.get("/instruction", function (req, res) {
 
   }
   else{
-    res.redirect("/index");
+    res.redirect("/");
   }
   // res.render("Instruction");
 });
@@ -250,7 +250,7 @@ app.get("/quizfinal", function (req, res) {
     }
   }
     else{
-    res.redirect("/index");
+    res.redirect("/");
   }
 });
 
@@ -259,7 +259,7 @@ app.get("/complete", function (req, res) {
     res.render("complete");
   }
   else{
-    res.redirect("/index");
+    res.redirect("/");
   }
   // res.render("complete");
 });
@@ -301,7 +301,7 @@ app.post("/instruction", function (req, res){
     }
 });
 
-app.post('/index', async function(req, res, next){
+app.post('/', async function(req, res, next){
 
   // console.log(req.body);
   // console.log("1");
@@ -553,7 +553,7 @@ app.get("/logout", function(req, res){
   });
 
   req.logout();
-  res.redirect("/index");
+  res.redirect("/");
 });
 
 let port = process.env.PORT;
