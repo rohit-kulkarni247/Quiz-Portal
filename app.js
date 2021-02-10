@@ -316,8 +316,8 @@ app.post('/', async function (req, res, next) {
   let currentMin = new Date().getMinutes();
 
   if (quiztype == 'melaquiz') {
-    if (currentDate == 14) {
-      if (currentHrs == 11) {
+    if (currentDate == 10) {
+      if (currentHrs == 21) {
         if (currentMin >= 30 && currentMin <= 59) {
           await axios.post('https://backend.credenz.in/eventlogin', {
             username: username,
@@ -394,9 +394,9 @@ app.post('/', async function (req, res, next) {
     }
   }
   else if (quiztype == 'generalquiz') {
-    if (currentDate == 13) {
-      if (currentHrs == 12) {
-        if (currentMin >= 0 && currentMin <= 30) {
+    if (currentDate == 10) {
+      if (currentHrs == 21) {
+        if (currentMin >= 30 && currentMin <= 59) {
           await axios.post('https://backend.credenz.in/eventlogin', {
             username: username,
             event: quiztype,
@@ -472,8 +472,8 @@ app.post('/', async function (req, res, next) {
     }
   }
   else {
-    if (currentDate == 12) {
-      if (currentHrs == 16) {
+    if (currentDate == 10) {
+      if (currentHrs == 21) {
         if (currentMin >= 30 && currentMin <= 59) {
           await axios.post('https://backend.credenz.in/eventlogin', {
             username: username,
