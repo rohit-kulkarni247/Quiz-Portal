@@ -388,8 +388,8 @@ app.post('/', async function (req, res, next) {
     }
   }
   else if (quiztype == 'generalquiz') {
-    if (currentDate == 13) {
-      if (currentHrs == 12) {
+    if (currentDate == 10) {
+      if (currentHrs == 19) {
         if (currentMin >= 0 && currentMin <= 30) {
           await axios.post('https://backend.credenz.in/eventlogin', {
             username: username,
