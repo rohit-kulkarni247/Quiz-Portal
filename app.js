@@ -371,10 +371,10 @@ app.post('/', async function (req, res, next) {
               }
               req.logIn(user, function (err) {
                 if (err) {
-                  // console.log("4error");
+                  console.log("4error");
                   return next(err);
                 } else {
-                  // console.log("4hi");
+                  console.log("4hi");
                   return res.redirect("/instruction");
                 }
               });
