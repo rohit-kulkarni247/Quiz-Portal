@@ -32,6 +32,7 @@ $(document).ready(function() {
 // submitPoll();
 
 $(window).blur(function() {
+    // confirm("You have been logged out due to unauthorized activity");
     window.location="/logout";
 });
 
