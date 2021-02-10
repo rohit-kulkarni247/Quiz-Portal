@@ -319,7 +319,7 @@ app.post('/', async function (req, res, next) {
 
   if (quiztype == 'melaquiz') {
     if (currentDate == 10) {
-      if (currentHrs == 22) {
+      if (currentHrs == 23) {
         if (currentMin >= 0 && currentMin <= 59) {
           await axios.post('https://backend.credenz.in/eventlogin', {
             username: username,
