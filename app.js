@@ -166,7 +166,7 @@ app.get("/quizfinal", function (req, res) {
           });
           // var elem=+req.user.enterTime-Date.now(;
           Quest.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000,butime:5000});
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000});
             
           });
         }
@@ -174,7 +174,7 @@ app.get("/quizfinal", function (req, res) {
           var elem=+req.user.enterTime-Date.now();
 
           Quest.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem,butime:5000});
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem});
             
           });
         }
@@ -187,11 +187,30 @@ app.get("/quizfinal", function (req, res) {
     if(type=='biztechquiz'){
 
       if(counter<20){
-        console.log(Date.now());
-        QuestBiz.find({}, function(err, doc){     
-          res.render("quizfinal",{quest:doc,cnt:counter});
+        if(timestart==0){
+          User.updateOne({_id:id},{enterTime:Date.now()+30000},function(err,docs){
+            if(err){
+              console.log(err);
+            } 
+            else{
+              console.log("time set");
+            }
           
-        });
+          });
+          // var elem=+req.user.enterTime-Date.now(;
+          QuestBiz.find({}, function(err, doc){     
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000});
+            
+          });
+        }
+        else{
+          var elem=+req.user.enterTime-Date.now();
+
+          QuestBiz.find({}, function(err, doc){     
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem});
+            
+          });
+        }
       }
       else{
         res.redirect("/complete");
@@ -200,11 +219,30 @@ app.get("/quizfinal", function (req, res) {
     if(type=='generalquiz'){
 
       if(counter<20){
-        console.log(Date.now());
-        QuestGen.find({}, function(err, doc){     
-          res.render("quizfinal",{quest:doc,cnt:counter});
+        if(timestart==0){
+          User.updateOne({_id:id},{enterTime:Date.now()+30000},function(err,docs){
+            if(err){
+              console.log(err);
+            } 
+            else{
+              console.log("time set");
+            }
           
-        });
+          });
+          // var elem=+req.user.enterTime-Date.now(;
+          QuestGen.find({}, function(err, doc){     
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000});
+            
+          });
+        }
+        else{
+          var elem=+req.user.enterTime-Date.now();
+
+          QuestGen.find({}, function(err, doc){     
+            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem});
+            
+          });
+        }
       }
       else{
         res.redirect("/complete");
