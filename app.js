@@ -378,7 +378,8 @@ app.post('/', async function (req, res, next) {
                   return next(err);
                 } else {
                   console.log("4hi");
-                  return res.redirect("/instruction");
+                  req.session.save(() => res.redirect("/instruction"))
+                  // return res.redirect("/instruction");
                 }
               });
             }
