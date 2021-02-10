@@ -20,11 +20,12 @@ app.set("view engine", "ejs");
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
-
+app.enable('trust proxy');
 app.use(session({
   secret: "My little secret of football tactics.",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  proxy: true
 }));
 
 app.use(passport.initialize());
@@ -140,12 +141,12 @@ app.get("/web_team", function (req, res) {
 
 app.get("/instruction", function (req, res) {
   if (req.isAuthenticated()) {
-    console.log("Authenticated")
+    console.log("Authenticated");
     res.render("Instruction");
 
   }
   else {
-    console.log(req)
+    console.log("Not Authenticated");
     res.redirect("/");
   }
   // res.render("Instruction");
