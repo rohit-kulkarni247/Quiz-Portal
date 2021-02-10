@@ -288,23 +288,6 @@ app.post("/singup", function(req, res){
     console.log(error);
   });
 
-
-  // console.log(req.body);
-  // const { username, password, mobile, cars } = req.body;
-  // const newUser = new User({
-  //   username,
-  //   password, 
-  //   mobile,
-  //   quiztype:cars
-  // });
-
-  // newUser.save()
-  //     .then(user => {console.log('You are now registered and can log in');
-  //         res.redirect('/index');
-  //     })
-  //     .catch(err => console.log(err));
-
-
 });
 
 app.post("/instruction", function (req, res){
@@ -392,20 +375,20 @@ app.post('/index', async function(req, res, next){
 
 app.post("/quizfinal", function (req, res) {
   var id=req.user.id;
-  
   var counter=req.user.questcount;
   var quiztype=req.user.quiztype;
   User.updateOne({_id:id},{
-      $push: {
-        answer:req.body.answer
+    $push: {
+      answer:req.body.answer
       }
     },
     function(err,student){
       if(err) return err;
       if(!student) return res.send();
     
-    });
+  });
 
+  if(quiztype=='melaquiz'){
     var useranswer=req.body.answer;
     UserAns.find({}, function(err, doc){     
       var temp=doc[counter].toObject().ans;
@@ -417,7 +400,7 @@ app.post("/quizfinal", function (req, res) {
         var n = item.localeCompare(useranswer);
         if(n==0){
           m1=m1+1;
-        
+          
           User.updateOne({_id:id},{marks:m1},function(err,docs){
             if(err){
               console.log(err);
@@ -427,37 +410,131 @@ app.post("/quizfinal", function (req, res) {
             }
           
           });
-        
+          
         }    
       }
+    });
     
-  });
+    User.updateOne({_id:id},{questcount:counter+1},function(err,docs){
+      if(err){
+        console.log(err);
+      } 
+      else{
+        console.log("questcount updated");
+      }
+      
+    });
 
-  
-  User.updateOne({_id:id},{questcount:counter+1},function(err,docs){
-    if(err){
-      console.log(err);
-    } 
-    else{
-      console.log("questcount updated");
-    }
+    User.updateOne({_id:id},{enterTime:0},function(err,docs){
+      if(err){
+        console.log(err);
+      } 
+      else{
+        console.log("time set");
+      }
+      
+    });
+    res.redirect("/quizfinal");
+  }
+
+
+  if(quiztype=='biztechquiz'){
+    var useranswer=req.body.answer;
+    UserBiz.find({}, function(err, doc){     
+      var temp=doc[counter].toObject().ans;
+      temp.forEach(myfunction);
+      function myfunction(item){
+        item=item.toLowerCase();
+        useranswer=useranswer.toLowerCase();
+        var m1=req.user.marks;
+        var n = item.localeCompare(useranswer);
+        if(n==0){
+          m1=m1+1;
+          
+          User.updateOne({_id:id},{marks:m1},function(err,docs){
+            if(err){
+              console.log(err);
+            } 
+            else{
+              console.log("marks updated");
+            }
+          
+          });
+          
+        }    
+      }
+    });
     
-  });
-  User.updateOne({_id:id},{enterTime:0},function(err,docs){
-    if(err){
-      console.log(err);
-    } 
-    else{
-      console.log("time set");
-    }
-  
-  });
+    User.updateOne({_id:id},{questcount:counter+1},function(err,docs){
+      if(err){
+        console.log(err);
+      } 
+      else{
+        console.log("questcount updated");
+      }
+      
+    });
+    
+    User.updateOne({_id:id},{enterTime:0},function(err,docs){
+      if(err){
+        console.log(err);
+      } 
+      else{
+        console.log("time set");
+      }
+      
+    });
+    res.redirect("/quizfinal");
+  }
 
-  // console.log(marks);
-  
-  res.redirect("/quizfinal");
-  
-  
+  if(quiztype=='generalquiz'){
+    var useranswer=req.body.answer;
+    UserGen.find({}, function(err, doc){     
+      var temp=doc[counter].toObject().ans;
+      temp.forEach(myfunction);
+      function myfunction(item){
+        item=item.toLowerCase();
+        useranswer=useranswer.toLowerCase();
+        var m1=req.user.marks;
+        var n = item.localeCompare(useranswer);
+        if(n==0){
+          m1=m1+1;
+          
+          User.updateOne({_id:id},{marks:m1},function(err,docs){
+            if(err){
+              console.log(err);
+            } 
+            else{
+              console.log("marks updated");
+            }
+          
+          });
+          
+        }    
+      }
+    });
+    
+    User.updateOne({_id:id},{questcount:counter+1},function(err,docs){
+      if(err){
+        console.log(err);
+      } 
+      else{
+        console.log("questcount updated");
+      }
+      
+    });
+    
+    User.updateOne({_id:id},{enterTime:0},function(err,docs){
+      if(err){
+        console.log(err);
+      } 
+      else{
+        console.log("time set");
+      }
+      
+    });
+    res.redirect("/quizfinal");
+  }
 });
 
 // logout
