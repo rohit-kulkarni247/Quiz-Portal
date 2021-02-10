@@ -140,10 +140,12 @@ app.get("/web_team", function (req, res) {
 
 app.get("/instruction", function (req, res) {
   if (req.isAuthenticated()) {
+    console.log("Authenticated")
     res.render("Instruction");
 
   }
   else {
+    console.log(req)
     res.redirect("/");
   }
   // res.render("Instruction");
