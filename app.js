@@ -81,21 +81,21 @@ const UserGen=mongoose.model("AnsGen",new AnsGen({}),"GEN_ANSWERS"); //general a
 // passport.use(User.createStrategy());
 
 passport.use(
-  new LocalStrategy({ username: 'username',passReqToCallback: true }, (req,username,password, done) => {
+  new LocalStrategy({ password: 'password'}, (username,password, done) => {
     
-    User.findOne({username: username})
+    User.findOne({password : password})
       .then(user => {
         if (!user) {
-          done(null, false, { message: 'That email is not registered' });
-          throw new Error("email not registered");
-        }
+          done(null, false, { message: 'That password is not registered' });
+          throw new Error("password not registered");
+        } 
         // console.log(req.body.phone);
-        if(password==user.password){
+        if(username==user.username){
             return done(null, user);
         }
         else {
-          done(null, false, { message: 'Password incorrect' });
-          throw new Error("password incorrect");
+          done(null, false, { message: 'email incorrect' });
+          throw new Error("email incorrect");
         }
       })
       .catch(err => console.log(err));
@@ -280,21 +280,22 @@ app.post("/instruction", function (req, res){
     }
 });
 
-app.post('/index', function(req, res, next){
+app.post('/index', async function(req, res, next){
 
-  console.log(req.body);
+  // console.log(req.body);
+  // console.log("1");
   const { username, password, quiztype } = req.body;
-  axios.post('https://backend.credenz.in/eventlogin',{
+   await axios.post('https://backend.credenz.in/eventlogin',{
     username:username,
     event:quiztype,
     password:password,
     adminpass:"pass"
   })
-  .then(function (response) {
+  .then(async function (response) {
     console.log(response.data);
 
     if(response.data.allow==true){
-
+      // console.log("2");
       const newUser = new User({
         username:response.data.user.username,
         password:response.data.user.password, 
@@ -302,12 +303,12 @@ app.post('/index', function(req, res, next){
         quiztype:req.body.quiztype
       });
       
-      newUser.save()
-        .then(user => {console.log('You are now registered and can log in');
+      await newUser.save()
+        .then(user => {
+          console.log('You are now registered and can log in');
 
-        
-      })
-      .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
     }
     else{
       return res.render("index",{failed:"User not found"});
@@ -325,16 +326,20 @@ app.post('/index', function(req, res, next){
       if (err) { 
         console.log(err);
         // return next(err);
+        // console.log("3");
       }
       if (!user) { 
+        // console.log("3not user");
         res.render("index",{failed:"Invalid details entered"}); 
       }
       req.logIn(user, function(err) {
         if (err) { 
-          console.log("hello");
+          // console.log("4error");
           return next(err); 
+        }else{
+          // console.log("4hi");
+          return res.redirect("/instruction");
         }
-        return res.redirect("/instruction");
       });
      }
   )(req, res, next);
