@@ -121,6 +121,10 @@ app.get("/", function (req, res) {
   res.render("index",{failed:""});
 });
 
+app.get("/ques", function (req, res) {
+  res.render("ques3",{cnt:30,timer:30000});
+});
+
 app.get("/our_team", function (req, res) {
   res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   res.render("our_team");
@@ -165,18 +169,35 @@ app.get("/quizfinal", function (req, res) {
           
           });
           // var elem=+req.user.enterTime-Date.now(;
-          Quest.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000});
-            
-          });
+          if(counter==1){
+            Quest.find({}, function(err, doc){     
+              res.render("ques3",{type:"Mela Quiz",quest:doc,cnt:counter,timer:30000});
+              
+            });
+          }
+          else{
+
+            Quest.find({}, function(err, doc){     
+              res.render("quizfinal",{type:"Mela Quiz",quest:doc,cnt:counter,timer:30000});
+              
+            });
+          }
         }
         else{
           var elem=+req.user.enterTime-Date.now();
+          if(counter==1){
 
-          Quest.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem});
-            
-          });
+            Quest.find({}, function(err, doc){     
+              res.render("ques3",{type:"Mela Quiz",quest:doc,cnt:counter,timer:elem});
+              
+            });
+          }
+          else{
+            Quest.find({}, function(err, doc){     
+              res.render("quizfinal",{type:"Mela Quiz",quest:doc,cnt:counter,timer:elem});
+              
+            });
+          }
         }
         
       }
@@ -199,7 +220,7 @@ app.get("/quizfinal", function (req, res) {
           });
           // var elem=+req.user.enterTime-Date.now(;
           QuestBiz.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000});
+            res.render("quizfinal",{type:"Biztech Quiz",quest:doc,cnt:counter,timer:30000});
             
           });
         }
@@ -207,7 +228,7 @@ app.get("/quizfinal", function (req, res) {
           var elem=+req.user.enterTime-Date.now();
 
           QuestBiz.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem});
+            res.render("quizfinal",{type:"Biztech Quiz",quest:doc,cnt:counter,timer:elem});
             
           });
         }
@@ -231,7 +252,7 @@ app.get("/quizfinal", function (req, res) {
           });
           // var elem=+req.user.enterTime-Date.now(;
           QuestGen.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:30000});
+            res.render("quizfinal",{type:"General Quiz",quest:doc,cnt:counter,timer:30000});
             
           });
         }
@@ -239,7 +260,7 @@ app.get("/quizfinal", function (req, res) {
           var elem=+req.user.enterTime-Date.now();
 
           QuestGen.find({}, function(err, doc){     
-            res.render("quizfinal",{quest:doc,cnt:counter,timer:elem});
+            res.render("quizfinal",{type:"General Quiz",quest:doc,cnt:counter,timer:elem});
             
           });
         }
@@ -249,7 +270,7 @@ app.get("/quizfinal", function (req, res) {
       }
     }
   }
-    else{
+  else{
     res.redirect("/");
   }
 });
@@ -272,23 +293,6 @@ app.get("/data",function (req, res) {
 
 
 //post routes
-app.post("/singup", function(req, res){
-
-  const { username, password, mobile, cars } = req.body;
-  axios.post('https://backend.credenz.in/eventlogin',{
-    username:username,
-    event:"melaquiz",
-    password:password,
-    adminpass:"pass"
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
-});
 
 app.post("/instruction", function (req, res){
   var checkedBody = req.body;
@@ -303,9 +307,11 @@ app.post("/instruction", function (req, res){
 
 app.post('/', async function(req, res, next){
 
-  // console.log(req.body);
-  // console.log("1");
   const { username, password, quiztype } = req.body;
+  let currentDate=new Date().getDate();
+  let currentHrs=new Date().getHours();
+  let currentMin=new Date().getMinutes();
+
    await axios.post('https://backend.credenz.in/eventlogin',{
     username:username,
     event:quiztype,

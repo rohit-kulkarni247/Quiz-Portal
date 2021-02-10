@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/quizfinal.css">
+    <link rel="stylesheet" href="/css/quest.css">
     <link rel="icon" href="images/live30.png">
 
     <script src="/js/quizfinal.js"></script>
@@ -32,7 +32,7 @@
         <a class="navbar-brand" href="#">
           <img src="images/quiz (1).png" id="brand" id="img_pisb" class="d-inline-block align-top" alt="">
         </a>
-        <a class="navbar-brand ml-auto" id="ourteam" style="font-family: 'Gruppo', cursive; font-weight: bold;" ><%= type %></a>
+        <a class="navbar-brand ml-auto" id="ourteam" style="font-family: 'Gruppo', cursive; font-weight: bold;" >BIZ TECH</a>
 
 
         <a class="navbar-brand ml-auto" href="#">
@@ -43,7 +43,7 @@
     </nav>
     
    <div class="container-fluid">
-       <div class="row d-flex justify-content-center" id="main_row" style="padding-top: 115px;">
+       <div class="row d-flex justify-content-center" id="main_row" style="padding-top: 50px;">
             <div class="col-lg-2 col-12 col-md-3" id="one">
                             <div id="countdown"></div>
                             <div id="finish"></div>
@@ -53,16 +53,17 @@
            <div class="col-lg-8 col-12 col-md-7 " id="two" >
                 <div class="row" id="ques" >
                     <div class="col-lg-12">
-                        <p id="question" runat="server" onCopy="return false" onPaste="return false" onDrop="return false"> <%= quest[cnt].toObject().question %>
+                        <p id="question" runat="server" onCopy="return false" onPaste="return false" onDrop="return false"> 
+                            <%= quest[cnt].toObject().question %>
                         </p>
                     </div>
                 </div>
 
-                <!-- <div class="row no-gutters">
+                <div class="row no-gutters">
                     <div class="col-lg-12">
-                        <img src="images/ques.jpg"  class="img-fluid" id="responsive" width="600" height="400">
+                        <img src="images/photo.jpeg"  class="img-fluid photo" id="responsive" width="600" height="50">
                     </div>
-                </div> -->
+                </div>
 
                 <div class="row no-gutters">
                     <div class="col-lg-12">
