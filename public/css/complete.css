@@ -84,7 +84,20 @@ body::before {
   }
 }
 
+
+/* @media (max-width: 786px) { */
+  .quiz-logo {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+  }  
+/* } */
+
 @media (max-width: 426px) {
+  #title_sps{
+    display: none !important ; 
+  }  
   
   #titletext {
     margin-left: 23vw;
@@ -298,7 +311,8 @@ body::before {
       margin-top: 3.5vh;
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 768px) {    
+
     footer {
       margin-top: 4vh;
     }
