@@ -126,6 +126,10 @@ input {
 }
 
 @media screen and (max-width: 767.9px) {
+  #title_sps {
+    display: none !important ;
+  }
+
   body {
     /* background-image: url(puz1.png); */
     background-position: center;
