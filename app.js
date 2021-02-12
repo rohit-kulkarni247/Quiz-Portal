@@ -139,7 +139,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/resultofquiz",function (req, res) {
-  User.find({}).sort({question:1}).limit(10).exec(function (err,docs){
+  User.find({}).sort({"marks":-1}).limit(10).exec(function (err,docs){
     res.send(docs);
   })
 })
