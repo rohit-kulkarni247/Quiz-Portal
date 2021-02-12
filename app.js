@@ -153,14 +153,14 @@ app.get("/web_team", function (req, res) {
 })
 
 app.get("/instruction", function (req, res) {
-  if (req.isAuthenticated()) {
-    res.render("Instruction");
+  // if (req.isAuthenticated()) {
+  //   res.render("Instruction");
 
-  }
-  else {
-    res.redirect("/");
-  }
-  // res.render("Instruction");
+  // }
+  // else {
+  //   res.redirect("/");
+  // }
+  res.render("Instruction");
 });
 
 app.get("/quizfinal", function (req, res) {
@@ -188,14 +188,14 @@ app.get("/quizfinal", function (req, res) {
           // var elem=+req.user.enterTime-Date.now(;
           if (counter == 1) {
             Quest.find({}, function (err, doc) {
-              res.render("ques3", { type: "Mela Quiz", quest: doc, cnt: counter, timer: 30000 });
+              res.render("ques3", { type: "Mela", quest: doc, cnt: counter, timer: 30000 });
 
             });
           }
           else {
 
             Quest.find({}, function (err, doc) {
-              res.render("quizfinal", { type: "Mela Quiz", quest: doc, cnt: counter, timer: 30000 });
+              res.render("quizfinal", { type: "Mela", quest: doc, cnt: counter, timer: 30000 });
 
             });
           }
@@ -205,13 +205,13 @@ app.get("/quizfinal", function (req, res) {
           if (counter == 1) {
 
             Quest.find({}, function (err, doc) {
-              res.render("ques3", { type: "Mela Quiz", quest: doc, cnt: counter, timer: elem });
+              res.render("ques3", { type: "Mela", quest: doc, cnt: counter, timer: elem });
 
             });
           }
           else {
             Quest.find({}, function (err, doc) {
-              res.render("quizfinal", { type: "Mela Quiz", quest: doc, cnt: counter, timer: elem });
+              res.render("quizfinal", { type: "Mela", quest: doc, cnt: counter, timer: elem });
 
             });
           }
@@ -237,7 +237,7 @@ app.get("/quizfinal", function (req, res) {
           });
           // var elem=+req.user.enterTime-Date.now(;
           QuestBiz.find({}, function (err, doc) {
-            res.render("quizfinal", { type: "Biztech Quiz", quest: doc, cnt: counter, timer: 30000 });
+            res.render("quizfinal", { type: "Biztech", quest: doc, cnt: counter, timer: 30000 });
 
           });
         }
@@ -245,7 +245,7 @@ app.get("/quizfinal", function (req, res) {
           var elem = +req.user.enterTime - Date.now();
 
           QuestBiz.find({}, function (err, doc) {
-            res.render("quizfinal", { type: "Biztech Quiz", quest: doc, cnt: counter, timer: elem });
+            res.render("quizfinal", { type: "Biztech", quest: doc, cnt: counter, timer: elem });
 
           });
         }
@@ -269,7 +269,7 @@ app.get("/quizfinal", function (req, res) {
           });
           // var elem=+req.user.enterTime-Date.now(;
           QuestGen.find({}, function (err, doc) {
-            res.render("quizfinal", { type: "General Quiz", quest: doc, cnt: counter, timer: 30000 });
+            res.render("quizfinal", { type: "General", quest: doc, cnt: counter, timer: 30000 });
 
           });
         }
@@ -277,7 +277,7 @@ app.get("/quizfinal", function (req, res) {
           var elem = +req.user.enterTime - Date.now();
 
           QuestGen.find({}, function (err, doc) {
-            res.render("quizfinal", { type: "General Quiz", quest: doc, cnt: counter, timer: elem });
+            res.render("quizfinal", { type: "General", quest: doc, cnt: counter, timer: elem });
 
           });
         }
@@ -330,9 +330,9 @@ app.post('/', async function (req, res, next) {
   let currentMin = new Date().getMinutes();
 
   if (quiztype == 'melaquiz') {
-    if (currentDate == 12) {
-      if (currentHrs == 10) {
-        if (currentMin >= 0 && currentMin <= 59) {
+    if (currentDate == 14) {
+      if (currentHrs == 11) {
+        if (currentMin >= 30 && currentMin <= 59) {
           await axios.post('https://backend.credenz.in/eventlogin', {
             username: username,
             event: quiztype,
