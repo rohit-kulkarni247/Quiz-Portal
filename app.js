@@ -138,6 +138,10 @@ app.get("/", function (req, res) {
   res.render("index", { failed: "" });
 });
 
+// app.get("/resultofquiz",function (req, res) {
+//   User.find({})
+// })
+
 app.get("/ques", function (req, res) {
   res.render("ques3", { cnt: 30, timer: 30000 });
 });
@@ -369,7 +373,7 @@ app.post('/', async function (req, res, next) {
             })
             .catch(function (error) {
               console.log(error);
-              return res.render("index", { failed: "Some error occurred" });
+              return res.render("index", { failed: "Limit exceeded" });
             });
 
           passport.authenticate("local",
@@ -447,7 +451,7 @@ app.post('/', async function (req, res, next) {
             })
             .catch(function (error) {
               console.log(error);
-              return res.render("index", { failed: "Some error occurred" });
+              return res.render("index", { failed: "Limit exceeded" });
             });
 
           passport.authenticate("local",
@@ -525,7 +529,7 @@ app.post('/', async function (req, res, next) {
             })
             .catch(function (error) {
               console.log(error);
-              return res.render("index", { failed: "Some error occurred" });
+              return res.render("index", { failed: "Limit exceeded" });
             });
 
           passport.authenticate("local",
