@@ -63,6 +63,7 @@ body {
 .nbc {
   margin-right: 1vw;
 }
+
 .nb {
   font-size: 18px;
   color: white;
@@ -181,7 +182,7 @@ a.ft {
 }
 .cred {
   height: 280px;
-  width: 100%;
+  width: 600px;
   margin-bottom: 1vw;
 }
 .txt {
@@ -215,112 +216,146 @@ a.ft {
   .cred {
     margin-left: 1vw;
   }
-}
-.title {
-  display: none;
-}
-@media (max-width: 1685px) {
+
+  .title {
+    display: none;
+  }
+  .cred {
+    height: 300px !important;
+    width: 600px !important;
+    margin-bottom: 1vw;
+    margin-top: 3vw !important;
+  }
   .stxt {
-    left: 15vw !important;
+    margin-left: 13vw !important;
     font-size: 35px;
   }
   .en {
-    left: 13vw !important;
+    margin-left: 12vw !important;
     font-size: 90px;
+  }
+}
+
+@media (max-width: 1685px) {
+  .stxt {
+    left: 27vw !important;
+    font-size: 35px;
+  }
+  .en {
+    left: 25vw !important;
+    font-size: 100px;
   }
   .input-area {
     margin-top: 19vw !important;
-    height: 33vw;
-    width: 24vw;
+    height: 35vw !important;
+    width: 26vw !important;
   }
   .cred {
     margin-top: 2vw;
     margin-left: 0vw;
+  }
+  .cre1 {
+    margin-left: 6.5vw !important;
   }
 }
 
 @media (max-width: 1601px) {
   .input-area {
     margin-top: 6vw !important;
-    height: 33vw;
-    width: 24vw;
+    height: 32vw !important;
+    width: 24vw !important;
   }
 
   .cred {
     margin-top: 0px;
-    height: 240px;
-    width: 420px;
+    height: 320px !important;
+    width: 700px !important;
+  }
+  .cre1 {
+    margin-left: 5.5vw !important;
+  }
+
+  .stxt {
+    left: 14vw !important;
+    font-size: 35px;
+  }
+  .en {
+    left: 12vw !important;
+    font-size: 100px;
   }
 }
 
 @media (max-width: 1441px) {
   .input-area {
     margin-top: 9vw !important;
-    height: 33vw;
-    width: 24vw;
+    height: 33vw !important;
+    width: 26vw !important;
   }
   .stxt {
-    left: 14vw;
+    left: 18vw !important;
     bottom: 4vw;
-    font-size: 32.5px !important;
+    font-size: 35px !important;
   }
   .en {
-    left: 12vw;
+    left: 16vw !important;
     top: -6vw;
-    font-size: 80px !important;
+    font-size: 90px !important;
   }
-  .cred {
-    margin-top: 0px;
-    height: 220px;
-    width: 400px;
+  .cre1 {
+    margin-left: 5.5vw !important;
   }
 }
 
 @media (max-width: 1401px) {
   .input-area {
     margin-top: 11vw;
-    height: 35vw;
-    width: 25vw;
+    height: 39vw !important;
+    width: 30vw !important;
   }
   .stxt {
-    left: 18vw;
+    padding-left: 15vw;
     bottom: 4vw;
     font-size: 32.5px !important;
-    margin-left: 4vw !important;
   }
   .en {
-    left: 14vw;
+    left: 29vw !important;
     top: -6vw;
     font-size: 65px !important;
   }
   .cred {
     margin-top: 2vw;
+    height: 310px !important;
+    width: 580px !important;
+  }
+  .cre1 {
+    margin-left: 8vw !important;
+  }
+  .submit-btn {
+    left: 7.3vw;
   }
 }
 
 @media (max-width: 1367px) {
   .stxt {
-    left: 10vw;
+    left: 0vw !important;
     bottom: 4vw;
     font-size: 27px !important;
-    margin-left: -2vw !important;
   }
   .en {
-    left: 8vw;
+    left: 14vw !important;
     top: -6vw;
     font-size: 65px !important;
-    margin-left: -2vw !important;
   }
   .cred {
-    height: 170px;
-    width: 320px;
+    height: 285px !important;
+    width: 620px !important;
     margin-bottom: 1vw;
     margin-left: -1vw;
   }
   .input-area {
     margin-top: 7vw !important;
-    height: 32vw;
-    width: 23vw;
+    height: 33.3vw !important;
+    width: 27vw !important;
   }
   .cre1 {
     margin-top: -13vw;
@@ -328,53 +363,51 @@ a.ft {
     height: 75px;
     width: 75px;
   }
-}
-
-@media (max-width: 1361px) {
-  .stxt {
-    left: 12vw;
-    bottom: 4vw;
-  }
-  .en {
-    left: 10vw;
-    top: -6vw;
-  }
-  .cred {
-    margin-bottom: 1vw;
-  }
-  .input-area {
-    margin-top: 7vw;
-    height: 32vw;
-    width: 23vw;
-  }
   .cre1 {
-    margin-top: -13vw;
-    margin-left: 5.5vw;
-    height: 75px;
-    width: 75px;
+    margin-left: 7.6vw !important;
+  }
+  .submit-btn {
+    left: 6.2vw;
   }
 }
 
 @media (max-width: 1281px) and (max-height: 1081px) {
+  .cred {
+    margin-top: 5vw !important;
+    height: 245px !important;
+    width: 550px !important;
+  }
   .input-area {
     margin-top: 15vw !important;
-    height: 37vw;
+    height: 35vw !important;
+    width: 29vw;
   }
   .stxt {
-    left: 14vw;
+    left: 14vw !important;
     bottom: 4vw;
     margin-left: 6vw !important;
   }
   .en {
-    left: 13vw;
+    left: 27vw !important;
     top: -6vw;
     margin-left: 2vw !important;
+  }
+  .cre1 {
+    margin-left: 8.5vw !important;
+  }
+  .submit-btn {
+    left: 8.7vw;
+  }
+  .form-check-label {
+    font-size: 13px;
   }
 }
 
 @media (max-width: 1281px) and (max-height: 961px) {
   .input-area {
-    margin-top: 15vw;
+    margin-top: 10vw !important;
+    width: 29vw !important;
+    padding-right: -10vw;
   }
   .stxt {
     left: 14vw;
@@ -389,7 +422,7 @@ a.ft {
 @media (max-width: 1281px) and (max-height: 810px) {
   .input-area {
     margin-top: 9vw !important;
-    height: 38vw;
+    height: 35vw;
   }
   .stxt {
     margin-left: 3vw !important;
@@ -423,16 +456,16 @@ a.ft {
 
 @media (max-width: 1281px) and (max-height: 721px) {
   .input-area {
-    margin-top: 6vw;
-    height: 32vw;
+    margin-top: 5.6vw !important;
+    height: 34vw !important;
   }
 }
 
 @media (max-width: 1153px) {
   .input-area {
     margin-top: 12vw !important;
-    height: 37vw;
-    width: 25vw;
+    height: 40vw !important;
+    width: 30vw !important;
   }
   .txt {
     font-size: 35px;
@@ -453,13 +486,18 @@ a.ft {
     height: 75px;
     width: 75px;
   }
+  .cred {
+    margin-top: 8vw !important;
+    height: 265px !important;
+    width: 590px !important;
+  }
 }
 
 @media (max-width: 1026px) {
   .input-area {
     margin-top: 12vw;
     height: 39vw;
-    width: 26vw;
+    width: 31.8vw !important;
   }
   .txt {
     font-size: 30px;
@@ -480,13 +518,18 @@ a.ft {
     height: 75px;
     width: 75px;
   }
+  .cred {
+    margin-top: 8vw !important;
+    height: 250px !important;
+    width: 550px !important;
+  }
 }
 
 @media (max-width: 769px) {
   .input-area {
     top: 18vw;
-    height: 53vw;
-    width: 32vw;
+    height: 53vw !important;
+    width: 35vw !important;
   }
   .il {
     display: none;
@@ -495,13 +538,13 @@ a.ft {
     font-size: 30px;
   }
   .stxt {
-    left: 14vw;
+    left: 4vw !important;
     bottom: 4vw;
     font-size: 30px;
     margin-left: 7vw !important;
   }
   .en {
-    left: 12vw;
+    left: 17vw !important;
     top: -6vw;
     font-size: 65px;
     margin-left: 6vw !important;
@@ -514,9 +557,12 @@ a.ft {
   }
   .cred {
     margin-top: 8vw;
-    height: 150px;
-    width: 270px;
+    height: 210px !important;
+    width: 400px !important;
     margin-bottom: 1vw;
+  }
+  .form-check-label {
+    font-size: 13px;
   }
   .submit-btn {
     width: 12vw;
@@ -526,34 +572,38 @@ a.ft {
 @media (max-width: 542px) {
   .input-area {
     top: 16vw;
-    height: 70vw;
-    width: 34vw;
+    height: 70vw !important;
+    width: 42vw !important;
+    left: 25vw;
   }
   .txt {
     font-size: 30px;
   }
 
   .stxt {
-    margin-left: 10vw !important;
+    margin-left: 1vw !important;
     font-size: 26px !important;
   }
   .en {
-    left: 15vw;
+    left: 10vw !important;
     top: -8vw;
     font-size: 50px !important;
     margin-left: 8vw !important;
   }
   .cre1 {
     margin-top: -14vw;
-    margin-left: 8vw;
+    margin-left: 12vw !important;
     height: 60px;
     width: 60px;
   }
   .cred {
     margin-top: 8vw;
-    height: 110px;
-    width: 210px;
+    height: 110px !important;
+    width: 250px !important;
     margin-bottom: 1vw;
+  }
+  .form-check-label {
+    font-size: 10px;
   }
   .submit-btn {
     width: 19vw;
@@ -578,10 +628,10 @@ a.ft {
   }
 
   .cred {
-    height: 100px;
-    width: 200px;
+    height: 100px !important;
+    width: 200px !important;
     margin-left: 19vw;
-    margin-top: 12vw;
+    margin-top: 12vw !important;
   }
   .txt {
     font-size: 25px;
@@ -626,16 +676,16 @@ a.ft {
     height: 75px;
     width: 75px;
     margin-top: -34vw;
-    margin-left: 15vw;
+    margin-left: 15vw !important;
   }
   .input-area {
     position: absolute;
     top: 21vh;
-    height: 56vh;
-    width: 65vw;
+    height: 58vh !important;
+    width: 65vw !important;
     margin-bottom: 12vh;
     font-size: 18px;
-    margin-left: -14.5vw;
+    margin-left: -6vw;
     margin-top: 56vw;
     padding-left: 8vw;
     padding-top: 15vw;
@@ -650,7 +700,7 @@ a.ft {
   }
   .submit-btn {
     width: 30vw;
-    margin-left: 4vw;
+    margin-left: 2vw;
     margin-top: 4vw;
   }
   .ico {
@@ -665,6 +715,9 @@ a.ft {
   .stxt {
     margin-left: 12vw;
   }
+  .form-check-label {
+    font-size: 12px;
+  }
   .en {
     margin-left: 13vw;
   }
@@ -676,7 +729,7 @@ a.ft {
   }
   .input-area {
     height: 57vh;
-    width: 65vw;
+    width: 68vw !important;
     font-size: 15px;
     padding-left: 9.5vw;
     top: 20vh;
@@ -706,7 +759,7 @@ a.ft {
     margin-top: 13vw;
     height: 70px;
     width: 150px;
-    margin-left: 21vw;
+    margin-left: 17vw;
   }
   .nt {
     font-size: 10px;
@@ -722,15 +775,16 @@ a.ft {
   }
   .input-area {
     height: 58vh;
-    width: 65vw;
+    width: 70vw !important;
     font-size: 15px;
-    padding-left: 9.5vw;
-    top: 20vh;
+    padding-left: 7vw;
+    top: 22vh;
+    left: 22vw;
   }
   .cre1 {
     height: 60px;
     width: 60px;
-    margin-left: 13.2vw;
+    margin-left: 18vw !important;
   }
   .submit-btn {
     font-size: 15px;
@@ -749,10 +803,10 @@ a.ft {
     font-size: 18px !important;
   }
   .cred {
-    margin-top: 13vw;
+    margin-top: 13vw !important;
     height: 70px;
     width: 135px;
-    margin-left: 23vw;
+    margin-left: 12vw;
   }
   .nt {
     font-size: 10px;
@@ -767,20 +821,20 @@ a.ft {
     font-size: 10px;
   }
   .input-area {
-    height: 60vh;
-    width: 65vw;
+    height: 63vh !important;
+    width: 75vw !important;
     font-size: 15px;
-    padding-left: 9.5vw;
-    top: 23vh;
+    padding-left: 6vw;
+    top: 21vh;
   }
   .cre1 {
     height: 60px;
     width: 60px;
-    margin-left: 13.2vw;
+    margin-left: 20vw !important;
   }
   .submit-btn {
     font-size: 15px;
-    margin-left: 2vw;
+    margin-left: 5vw;
   }
   .sign {
     font-size: 12px;
@@ -795,17 +849,19 @@ a.ft {
     font-size: 18px !important;
   }
   .cred {
-    margin-top: 17vw;
-    height: 70px;
-    width: 125px;
-    margin-left: 21vw;
+    margin-top: 16vw !important;
+    height: 70px !important;
+    width: 155px !important;
+    margin-left: 19vw;
   }
 }
 
 @media (max-width: 300px) {
   .input-area {
     margin-top: 8vh !important;
-    height: 58vh;
+    height: 58vh !important;
+    width: 80vw !important;
+    left: 17vw;
   }
   .txt {
     font-size: 12px;
@@ -822,9 +878,16 @@ a.ft {
     font-size: 10px;
   }
   .cred {
-    margin-top: 22vw;
-    height: 60px;
-    width: 115px;
-    margin-left: 18vw;
+    margin-top: 22vw !important;
+    height: 60px !important;
+    width: 135px !important;
+    margin-left: 14vw;
+  }
+  .form-check-label {
+    font-size: 10px;
+  }
+  .submit-btn {
+    font-size: 15px;
+    margin-left: 8vw;
   }
 }
