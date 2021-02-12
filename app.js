@@ -157,14 +157,14 @@ app.get("/web_team", function (req, res) {
 })
 
 app.get("/instruction", function (req, res) {
-  // if (req.isAuthenticated()) {
-  //   res.render("Instruction");
+  if (req.isAuthenticated()) {
+    res.render("Instruction");
 
-  // }
-  // else {
-  //   res.redirect("/");
-  // }
-  res.render("Instruction");
+  }
+  else {
+    res.redirect("/");
+  }
+  // res.render("Instruction");
 });
 
 app.get("/quizfinal", function (req, res) {
