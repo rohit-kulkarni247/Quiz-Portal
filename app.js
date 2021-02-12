@@ -138,9 +138,11 @@ app.get("/", function (req, res) {
   res.render("index", { failed: "" });
 });
 
-// app.get("/resultofquiz",function (req, res) {
-//   User.find({})
-// })
+app.get("/resultofquiz",function (req, res) {
+  User.find({}).sort({question:1}).limit(10).exec(function (err,docs){
+    res.send(docs);
+  })
+})
 
 app.get("/ques", function (req, res) {
   res.render("ques3", { cnt: 30, timer: 30000 });
