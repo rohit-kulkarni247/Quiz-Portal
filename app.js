@@ -139,7 +139,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/resultofquiz",function (req, res) {
-  User.find({}).sort({"marks":-1}).limit(10).exec(function (err,docs){
+  User.find({"quiztype":"melaquiz"}).sort({"marks":-1}).exec(function (err,docs){
     res.send(docs);
   })
 })
@@ -264,7 +264,7 @@ app.get("/quizfinal", function (req, res) {
 
       if (counter < 20) {
         if (timestart == 0) {
-          User.updateOne({ _id: id }, { enterTime: Date.now() + 30000 }, function (err, docs) {
+          User.updateOne({ _id: id }, { enterTime: Date.now() + 35000 }, function (err, docs) {
             if (err) {
               console.log(err);
             }
@@ -275,7 +275,7 @@ app.get("/quizfinal", function (req, res) {
           });
           // var elem=+req.user.enterTime-Date.now(;
           QuestGen.find({}, function (err, doc) {
-            res.render("quizfinal", { type: "General", quest: doc, cnt: counter, timer: 30000 });
+            res.render("quizfinal", { type: "General", quest: doc, cnt: counter, timer: 35000 });
 
           });
         }
