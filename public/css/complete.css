@@ -57,7 +57,7 @@ body::before {
   text-align: center;
 }
 #titletext {
-  margin-left: 41.3vw;
+  margin-left: 32.5vw;
 }
 #tickbox {
   margin-left: 5vw;
@@ -84,7 +84,21 @@ body::before {
   }
 }
 
+
+/* @media (max-width: 786px) { */
+  .quiz-logo {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+  }  
+/* } */
+
 @media (max-width: 426px) {
+  #title_sps{
+    display: none !important ; 
+  }  
+  
   #titletext {
     margin-left: 23vw;
     font: 20px ROBOTO;
@@ -121,6 +135,7 @@ body::before {
   }
 }
 @media (max-width: 385px) {
+  
   #titletext {
     margin-left: 15vw;
     font: 20px ROBOTO;
@@ -296,7 +311,8 @@ body::before {
       margin-top: 3.5vh;
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 768px) {    
+
     footer {
       margin-top: 4vh;
     }

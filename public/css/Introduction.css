@@ -59,6 +59,13 @@ body {
   font-family: Roboto;
 }
 
+.quiz-logo {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px !important;  /* 50% of your logo width */
+  display: block;
+}  
+
 /* Bottom adjust*/
 @media only screen and (max-width: 1921px) {
   .card-body {
@@ -256,6 +263,10 @@ body {
   }
 }
 @media (max-width: 425px) {
+  #title_sps{
+    display: none !important ; 
+  }  
+
   .title {
     font-size: 20px !important;
     padding-right: 40px !important;
