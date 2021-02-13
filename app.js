@@ -71,6 +71,8 @@ const loginschema = new mongoose.Schema({
 loginschema.plugin(passportLocalMongoose);
 
 const User = new mongoose.model("User", loginschema);
+const UserMela = new mongoose.model("UserMela", loginschema);
+
 
 const Schema = mongoose.Schema;
 const Quest = mongoose.model("Question", new Schema({}), "MELA"); //mela questions
@@ -100,7 +102,7 @@ const UserGen = mongoose.model("AnsGen", new AnsGen({}), "GEN_ANSWERS"); //gener
 passport.use(
   new LocalStrategy({ password: 'password' }, (username, password, done) => {
 
-    User.findOne({ password: password })
+    UserMela.findOne({ password: password })
       .then(user => {
         if (!user) {
           done(null, false, { message: 'That password is not registered' });
@@ -124,7 +126,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
+  UserMela.findById(id, function (err, user) {
     done(err, user);
   });
 });
@@ -138,11 +140,14 @@ app.get("/", function (req, res) {
   res.render("index", { failed: "" });
 });
 
+
 app.get("/resultofquiz",function (req, res) {
-  User.find({"quiztype":"generalquiz"}).sort({"marks":-1}).limit(10).exec(function (err,docs){
+  UserMela.find({"quiztype":"melaquiz"}).sort({"marks":-1}).limit(10).exec(function (err,docs){
     res.send(docs);
   })
+  
 })
+
 
 app.get("/ques", function (req, res) {
   res.render("ques3", { cnt: 30, timer: 30000 });
@@ -182,7 +187,7 @@ app.get("/quizfinal", function (req, res) {
         // console.log(Date.now());
 
         if (timestart == 0) {
-          User.updateOne({ _id: id }, { enterTime: Date.now() + 30000 }, function (err, docs) {
+          UserMela.updateOne({ _id: id }, { enterTime: Date.now() + 30000 }, function (err, docs) {
             if (err) {
               console.log(err);
             }
@@ -350,7 +355,7 @@ app.post('/', async function (req, res, next) {
 
               if (response.data.allow == true) {
                 // console.log("2");
-                const newUser = new User({
+                const newUser = new UserMela({
                   username: response.data.user.username,
                   password: response.data.user.password,
                   email: response.data.user.email,
@@ -578,7 +583,7 @@ app.post("/quizfinal", function (req, res) {
   var id = req.user.id;
   var counter = req.user.questcount;
   var quiztype = req.user.quiztype;
-  User.updateOne({ _id: id }, {
+  UserMela.updateOne({ _id: id }, {
     $push: {
       answer: req.body.answer
     }
@@ -602,7 +607,7 @@ app.post("/quizfinal", function (req, res) {
         if (n == 0) {
           m1 = m1 + 1;
 
-          User.updateOne({ _id: id }, { marks: m1 }, function (err, docs) {
+          UserMela.updateOne({ _id: id }, { marks: m1 }, function (err, docs) {
             if (err) {
               console.log(err);
             }
@@ -616,7 +621,7 @@ app.post("/quizfinal", function (req, res) {
       }
     });
 
-    User.updateOne({ _id: id }, { questcount: counter + 1 }, function (err, docs) {
+    UserMela.updateOne({ _id: id }, { questcount: counter + 1 }, function (err, docs) {
       if (err) {
         console.log(err);
       }
@@ -626,7 +631,7 @@ app.post("/quizfinal", function (req, res) {
 
     });
 
-    User.updateOne({ _id: id }, { enterTime: 0 }, function (err, docs) {
+    UserMela.updateOne({ _id: id }, { enterTime: 0 }, function (err, docs) {
       if (err) {
         console.log(err);
       }
@@ -743,7 +748,7 @@ app.get("/logout", function (req, res) {
   var id = req.user.id;
   counter = 20;
 
-  User.updateOne({ _id: id }, { questcount: counter }, function (err, docs) {
+  UserMela.updateOne({ _id: id }, { questcount: counter }, function (err, docs) {
     if (err) {
       console.log(err);
     }
