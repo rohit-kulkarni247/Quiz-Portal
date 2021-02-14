@@ -187,7 +187,7 @@ app.get("/quizfinal", function (req, res) {
         // console.log(Date.now());
 
         if (timestart == 0) {
-          UserMela.updateOne({ _id: id }, { enterTime: Date.now() + 30000 }, function (err, docs) {
+          UserMela.updateOne({ _id: id }, { enterTime: Date.now() + 40000 }, function (err, docs) {
             if (err) {
               console.log(err);
             }
@@ -199,14 +199,14 @@ app.get("/quizfinal", function (req, res) {
           // var elem=+req.user.enterTime-Date.now(;
           if (counter == 1) {
             Quest.find({}, function (err, doc) {
-              res.render("ques3", { type: "Mela", quest: doc, cnt: counter, timer: 30000 });
+              res.render("ques3", { type: "Mela", quest: doc, cnt: counter, timer: 40000 });
 
             });
           }
           else {
 
             Quest.find({}, function (err, doc) {
-              res.render("quizfinal", { type: "Mela", quest: doc, cnt: counter, timer: 30000 });
+              res.render("quizfinal", { type: "Mela", quest: doc, cnt: counter, timer: 40000 });
 
             });
           }
