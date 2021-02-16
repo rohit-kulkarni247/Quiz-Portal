@@ -3,14 +3,15 @@
 ## Introduction
 
     - A complete platform for all quiz enthusiasts to test their knowledge based on each type of quiz.
-    - Timer added to each question based on the type of quiz.
+    - Timer added to each question based on the type of quiz:
         - Biztech- 30 seconds
         - General- 35 seconds
         - MELA- 40 seconds
     - Answer gets auto submitted if not submitted before time.
-    - Copy, Paste, Cut options disabled to ensure full security.
+    - Copy, Paste and Cut options are disabled to ensure full security.
     - Changing tabs/browsers/window leads to disqualification.
     - Answers are checked and crossverified with allocation of marks to each user.
+    - User is authenticated using API calls from <a href="https://www.credenz.in/home">Credenz Website</a>
 
 ## Functionalities
 
