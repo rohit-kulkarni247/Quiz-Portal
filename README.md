@@ -11,8 +11,7 @@
     - Copy, Paste and Cut options are disabled to ensure full security.
     - Changing tabs/browsers/window leads to disqualification.
     - Answers are checked and crossverified with allocation of marks to each user.
-    - User is authenticated using API calls from
-    [Credenz Website](https://www.credenz.in/home)
+    - User is authenticated using API calls from Credenz Official Website.
 
 ## Functionalities
 
